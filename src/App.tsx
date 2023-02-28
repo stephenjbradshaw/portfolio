@@ -3,6 +3,7 @@ import ErrorPage from "./ErrorPage";
 import Home from "./routes/Home";
 import ProjectDetail from "./routes/ProjectDetail";
 import Root from "./routes/Root";
+import "./i18n/i18n";
 
 const router = createBrowserRouter([
   {
