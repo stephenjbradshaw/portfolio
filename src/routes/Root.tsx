@@ -1,8 +1,10 @@
 import {Link, Outlet} from "react-router-dom";
+import {ThemeProvider} from "styled-components";
+import {main} from "../themes/main";
 
 const Root = () => {
   return (
-    <>
+    <ThemeProvider theme={main}>
       <nav>
         <ul>
           <li>
@@ -19,7 +21,7 @@ const Root = () => {
       <div id="detail">
         <Outlet />
       </div>
-    </>
+    </ThemeProvider>
   );
 };
 
