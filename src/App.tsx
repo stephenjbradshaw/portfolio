@@ -4,6 +4,7 @@ import Home from "./routes/Home";
 import ProjectDetail from "./routes/ProjectDetail";
 import Root from "./routes/Root";
 import "./i18n/i18n";
+import Projects from "./routes/Projects";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "projects",
+        element: <Projects />,
       },
       {
         path: "projects/:projectId",

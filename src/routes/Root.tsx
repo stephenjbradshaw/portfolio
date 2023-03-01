@@ -22,10 +22,7 @@ const Root = () => {
             <Link to={`/`}>Home</Link>
           </li>
           <li>
-            <Link to={`projects/1`}>Project 1</Link>
-          </li>
-          <li>
-            <Link to={`projects/2`}>Project 2</Link>
+            <Link to={`projects`}>Projects</Link>
           </li>
         </ul>
       </nav>
