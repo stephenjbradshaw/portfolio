@@ -9,12 +9,10 @@ const Projects = () => {
   const {data, isError, isLoading} = useContentfulEntries<IProjectFields>();
   const {t} = useTranslation();
 
-  if (isError) return <Error />;
-
   return (
     <div>
       <H1>{t("PROJECTS")}</H1>
-      {isLoading ? <Loader /> : null}
+      {isLoading ? <Loader /> : isError ? <Error /> : null}
       <ul>
         {data?.length
           ? data.map(({fields}) => {

@@ -23,10 +23,10 @@ const Header = () => {
       {/* Language selector */}
       <ul>
         <li>
-          <button onClick={() => i18n.changeLanguage("en")}>EN</button>
+          <button onClick={() => i18n.changeLanguage("en-GB")}>EN</button>
         </li>
         <li>
-          <button onClick={() => i18n.changeLanguage("de")}>DE</button>
+          <button onClick={() => i18n.changeLanguage("de-DE")}>DE</button>
         </li>
       </ul>
       {/* Social links */}

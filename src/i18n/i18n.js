@@ -9,11 +9,11 @@ i18n
     debug: false,
     fallbackLng: "en",
     resources: {
-      en: {
-        translation: require("./en.json"),
+      "en-GB": {
+        translation: require("./en-GB.json"),
       },
-      de: {
-        translation: require("./de.json"),
+      "de-DE": {
+        translation: require("./de-DE.json"),
       },
     },
   });
