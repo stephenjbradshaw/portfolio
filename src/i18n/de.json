@@ -1,1 +1,6 @@
-{"HOMEPAGE": "Startseite"}
+{
+  "HOMEPAGE": "Startseite",
+  "PROJECTS": "Projekte",
+  "GENERAL_ERROR": "Schade! Etwas is schiefgelaufen. Versuchen Sie, die Seite zu aktualisieren",
+  "LOADING": "Laden..."
+}
