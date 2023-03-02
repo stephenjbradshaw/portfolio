@@ -5,7 +5,7 @@ interface Error {
   message: string;
 }
 
-const ErrorPage = () => {
+const NavError = () => {
   const error = useRouteError() as Error;
   console.error(error);
 
@@ -20,4 +20,4 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+export default NavError;

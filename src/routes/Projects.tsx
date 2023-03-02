@@ -14,7 +14,7 @@ const Projects = () => {
       <H1>{t("PROJECTS")}</H1>
       {isLoading ? <Loader /> : isError ? <Error /> : null}
       <ul>
-        {data?.length
+        {!isLoading && data?.length
           ? data.map(({fields}) => {
               return (
                 <li key={fields.title}>

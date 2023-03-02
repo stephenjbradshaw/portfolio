@@ -1,16 +1,17 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import ErrorPage from "./routes/RouteError";
+import NavError from "./routes/NavError";
 import Home from "./routes/Home";
 import ProjectDetail from "./routes/ProjectDetail";
-import Root from "./routes/Root";
+import Layout from "./routes/Layout";
 import "./i18n/i18n";
 import Projects from "./routes/Projects";
+import Contact from "./routes/Contact";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
+    element: <Layout />,
+    errorElement: <NavError />,
     children: [
       {
         index: true,
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "projects/:projectId",
         element: <ProjectDetail />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
     ],
   },

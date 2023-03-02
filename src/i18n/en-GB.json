@@ -2,5 +2,7 @@
   "HOMEPAGE": "Home page",
   "PROJECTS": "Projects",
   "GENERAL_ERROR": "Whoops! Something went wrong. Try refreshing the page.",
-  "LOADING": "Loading..."
+  "LOADING": "Loading...",
+  "HOME": "Home",
+  "CONTACT": "Contact"
 }

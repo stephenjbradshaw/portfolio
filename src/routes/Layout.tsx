@@ -4,7 +4,7 @@ import {main} from "../themes/main";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const Root = () => {
+const Layout = () => {
   return (
     <ThemeProvider theme={main}>
       <Header />
@@ -16,4 +16,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default Layout;

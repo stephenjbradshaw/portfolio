@@ -2,7 +2,7 @@ import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 
 const Header = () => {
-  const {i18n} = useTranslation();
+  const {i18n, t} = useTranslation();
 
   return (
     <header>
@@ -10,13 +10,13 @@ const Header = () => {
         {/* Nav is dropdown on mobile, header on desktop */}
         <ul>
           <li>
-            <Link to={`/`}>Home</Link>
+            <Link to={`/`}>{t("HOME")}</Link>
           </li>
           <li>
-            <Link to={`projects`}>Projects</Link>
+            <Link to={`projects`}>{t("PROJECTS")}</Link>
           </li>
           <li>
-            <Link to={`contact`}>Contact</Link>
+            <Link to={`contact`}>{t("CONTACT")}</Link>
           </li>
         </ul>
       </nav>
