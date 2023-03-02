@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {contentfulClient} from "../utils/contentful";
 
-const useContentfulEntries = <T>() => {
+const useGetEntries = <T>(contentType: string, slug?: string) => {
   const [data, setData] = useState<Entry<T>[] | null>(null);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,6 +18,8 @@ const useContentfulEntries = <T>() => {
       try {
         const results = await contentfulClient.getEntries<T>({
           locale: i18n.resolvedLanguage,
+          content_type: contentType,
+          "fields.slug[in]": slug,
         });
         const {items} = results;
         setData(items);
@@ -30,9 +32,9 @@ const useContentfulEntries = <T>() => {
     };
 
     fetchData();
-  }, [i18n.resolvedLanguage]);
+  }, [i18n.resolvedLanguage, slug]);
 
   return {data, isError, isLoading};
 };
 
-export default useContentfulEntries;
+export default useGetEntries;
