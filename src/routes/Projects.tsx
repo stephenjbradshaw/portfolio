@@ -1,6 +1,5 @@
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import Error from "../components/Error";
 import Loader from "../components/Loader";
 import useGetEntries from "../hooks/useGetEntries";
 import {IProjectFields} from "../schema/generated/contentful";
@@ -9,10 +8,17 @@ const Projects = () => {
   const {data, isError, isLoading} = useGetEntries<IProjectFields>("project");
   const {t} = useTranslation();
 
+  if (isLoading) return <Loader />;
+  if (isError) {
+    throw new Error("GENERAL_ERROR");
+  }
+  if (!data || data.length === 0) {
+    throw new Error("NOT_FOUND");
+  }
+
   return (
     <div>
       <h1>{t("PROJECTS")}</h1>
-      {isLoading ? <Loader /> : isError ? <Error /> : null}
       <ul>
         {!isLoading && data?.length
           ? data.map((entry) => {

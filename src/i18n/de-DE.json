@@ -1,8 +1,12 @@
 {
   "HOMEPAGE": "Startseite",
   "PROJECTS": "Projekte",
-  "GENERAL_ERROR": "Schade! Etwas is schiefgelaufen. Versuchen Sie, die Seite zu aktualisieren.",
+  "GENERAL_ERROR": "Schade! Etwas ist schiefgelaufen. Versuchen Sie bitte nochmal.",
   "LOADING": "Laden...",
   "HOME": "Start",
-  "CONTACT": "Kontakt"
+  "CONTACT": "Kontakt",
+  "NOT_FOUND": "Seite nicht gefunden.",
+  "PROJECT_LOAD_ERROR": "Die Projekte konnte nicht geladen werden. Versuchen Sie bitte nochmal.",
+  "SOMETHING_WENT_WRONG": "Etwas ist schiefgelaufen:",
+  "OOPS": "Hoppla!"
 }

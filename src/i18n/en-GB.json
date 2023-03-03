@@ -1,8 +1,12 @@
 {
   "HOMEPAGE": "Home page",
   "PROJECTS": "Projects",
-  "GENERAL_ERROR": "Whoops! Something went wrong. Try refreshing the page.",
+  "GENERAL_ERROR": "Whoops! Something went wrong. Please try again.",
   "LOADING": "Loading...",
   "HOME": "Home",
-  "CONTACT": "Contact"
+  "CONTACT": "Contact",
+  "NOT_FOUND": "Page not found.",
+  "PROJECT_LOAD_ERROR": "The project(s) could not be loaded. Please try again.",
+  "SOMETHING_WENT_WRONG": "Something went wrong:",
+  "OOPS": "Oops!"
 }

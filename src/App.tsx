@@ -1,5 +1,5 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import NavError from "./routes/NavError";
+import ErrorPage from "./routes/ErrorPage";
 import Home from "./routes/Home";
 import ProjectDetail from "./routes/ProjectDetail";
 import Layout from "./routes/Layout";
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <NavError />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -24,6 +24,7 @@ const router = createBrowserRouter([
       {
         path: "projects/:slug",
         element: <ProjectDetail />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "contact",

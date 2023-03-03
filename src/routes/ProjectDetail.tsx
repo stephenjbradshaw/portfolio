@@ -33,10 +33,10 @@ const ProjectDetail = () => {
 
   if (isLoading) return <Loader />;
   if (isError) {
-    throw new Error("There was an error displaying the article");
+    throw new Error("GENERAL_ERROR");
   }
   if (!data || data.length === 0) {
-    throw new Error("Page not found");
+    throw new Error("NOT_FOUND");
   }
 
   const {fields} = data[0];
