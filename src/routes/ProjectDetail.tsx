@@ -17,9 +17,7 @@ const renderOptions = {
       return (
         <img
           alt={fields.title}
-          src={`https:${fields.file.url}`}
-          height={fields.file.details.image.height}
-          width={fields.file.details.image.width}
+          src={`${fields.file.url}?fm=webp&w=300&h=300`}
         />
       );
     },
@@ -44,9 +42,8 @@ const ProjectDetail = () => {
     <>
       <h1>{fields.title}</h1>
       <img
-        style={{maxHeight: "10rem", maxWidth: "10rem"}}
         alt={fields.mainImage.fields.title}
-        src={fields.mainImage.fields.file.url}
+        src={`${fields.mainImage.fields.file.url}?fm=webp&w=300&h=300`}
       />
       {documentToReactComponents(fields.body, renderOptions)}
     </>

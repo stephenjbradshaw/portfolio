@@ -1,5 +1,7 @@
 export const light = {
-  colors: {},
+  colors: {
+    text: "#000",
+  },
 };
 
 export const dark = {

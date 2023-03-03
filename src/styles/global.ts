@@ -59,6 +59,7 @@ const typography = css`
       "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
     -moz-osx-font-smoothing: grayscale;
+    color: ${({theme}) => theme.colors.text};
   }
 
   code {
