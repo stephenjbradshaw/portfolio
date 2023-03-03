@@ -32,7 +32,7 @@ const useGetEntries = <T>(contentType: string, slug?: string) => {
     };
 
     fetchData();
-  }, [i18n.resolvedLanguage, slug]);
+  }, [contentType, i18n.resolvedLanguage, slug]);
 
   return {data, isError, isLoading};
 };

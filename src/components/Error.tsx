@@ -1,9 +1,8 @@
 import {useTranslation} from "react-i18next";
-import {Paragraph} from "../typography/Paragraph";
 
 const Error = () => {
   const {t} = useTranslation();
-  return <Paragraph>{t("GENERAL_ERROR")}</Paragraph>;
+  return <p>{t("GENERAL_ERROR")}</p>;
 };
 
 export default Error;

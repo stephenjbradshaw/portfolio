@@ -4,7 +4,6 @@ import Error from "../components/Error";
 import Loader from "../components/Loader";
 import useGetEntries from "../hooks/useGetEntries";
 import {IProjectFields} from "../schema/generated/contentful";
-import {H1} from "../typography/H1";
 
 const Projects = () => {
   const {data, isError, isLoading} = useGetEntries<IProjectFields>("project");
@@ -12,7 +11,7 @@ const Projects = () => {
 
   return (
     <div>
-      <H1>{t("PROJECTS")}</H1>
+      <h1>{t("PROJECTS")}</h1>
       {isLoading ? <Loader /> : isError ? <Error /> : null}
       <ul>
         {!isLoading && data?.length
