@@ -1,7 +1,6 @@
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import {BLOCKS, Node} from "@contentful/rich-text-types";
 import {useParams} from "react-router-dom";
-import Error from "../components/Error";
 import Loader from "../components/Loader";
 import useGetEntries from "../hooks/useGetEntries";
 import {IProjectFields} from "../schema/generated/contentful";
@@ -33,8 +32,12 @@ const ProjectDetail = () => {
   );
 
   if (isLoading) return <Loader />;
-  if (isError) return <Error />;
-  if (!data) return null;
+  if (isError) {
+    throw new Error("There was an error displaying the article");
+  }
+  if (!data || data.length === 0) {
+    throw new Error("Page not found");
+  }
 
   const {fields} = data[0];
 
