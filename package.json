@@ -8,15 +8,8 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.12",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@types/styled-components": "^5.1.26",
     "contentful": "^9.3.3",
     "contentful-management": "^10.30.0",
-    "contentful-typescript-codegen": "^3.4.0",
-    "dotenv": "^16.0.3",
     "i18next": "^22.4.10",
     "i18next-browser-languagedetector": "^7.0.1",
     "react": "^18.2.0",
@@ -30,9 +23,9 @@
   },
   "scripts": {
     "codegen": "contentful-typescript-codegen --output src/schema/generated/contentful.d.ts",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -52,5 +45,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.12",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-styled-components": "^2.0.7",
+    "contentful-typescript-codegen": "^3.4.0",
+    "customize-cra": "^1.0.0",
+    "dotenv": "^16.0.3",
+    "react-app-rewired": "^2.2.1"
   }
 }
