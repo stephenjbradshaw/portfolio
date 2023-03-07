@@ -10,7 +10,15 @@ const Home = () => {
   - Small about section
   */
 
-  return <div>{t("HOMEPAGE")}</div>;
+  return (
+    <div>
+      {t("HOMEPAGE")} Other homepage content Other homepage content Other
+      homepage content Other homepage content Other homepage content Other
+      homepage content Other homepage content Other homepage content Other
+      homepage content Other homepage content Other homepage content v Other
+      homepage content Other homepage content xv Other homepage content{" "}
+    </div>
+  );
 };
 
 export default Home;

@@ -50,6 +50,7 @@ const cssReset = css`
 
   #root {
     isolation: isolate;
+    height: 100%;
   }
 `;
 
@@ -65,6 +66,16 @@ const typography = css`
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
+  }
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
 `;
 

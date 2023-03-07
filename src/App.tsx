@@ -6,6 +6,7 @@ import Layout from "./routes/Layout";
 import "./i18n/i18n";
 import Projects from "./routes/Projects";
 import Contact from "./routes/Contact";
+import About from "./routes/About";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "about",
+        element: <About />,
       },
       {
         path: "projects",
