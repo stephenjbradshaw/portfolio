@@ -1,8 +1,7 @@
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {Link} from "react-router-dom";
 import styled from "styled-components";
-import {BaseButton} from "./BaseElements";
+import {BaseButton, BaseLink} from "./BaseElements";
 import HeaderMenu from "./HeaderMenu";
 
 const HeaderContent = styled.header`
@@ -13,19 +12,27 @@ const HeaderContent = styled.header`
   margin: 0 4vw;
 `;
 
-const MenuButton = styled(BaseButton)``;
+const NameLink = styled(BaseLink)`
+  font-size: 2.7rem;
+`;
+
+const MenuButton = styled(BaseButton)`
+  font-size: 2.7rem;
+`;
 
 const Header = () => {
   const {t} = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
   return (
     <>
       <header>
         <HeaderContent>
-          <Link to={`/`}>{"Stephen Bradshaw"}</Link>
+          <NameLink to={`/`}>{"Stephen Bradshaw"}</NameLink>
           <MenuButton
-            onClick={() => setIsMenuOpen((prev) => !prev)}
+            onClick={toggleMenu}
             aria-label={`${
               isMenuOpen ? t("CLOSE_NAV_MENU") : t("OPEN_NAV_MENU")
             }`}
@@ -43,7 +50,7 @@ const Header = () => {
             )}
           </MenuButton>
         </HeaderContent>
-        <HeaderMenu isOpen={isMenuOpen} />
+        <HeaderMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </header>
     </>
   );

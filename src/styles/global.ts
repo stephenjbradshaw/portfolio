@@ -48,6 +48,14 @@ const cssReset = css`
     overflow-wrap: break-word;
   }
 
+  ul, ol {
+    padding: 0
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
   #root {
     isolation: isolate;
     height: 100%;
@@ -55,9 +63,12 @@ const cssReset = css`
 `;
 
 const typography = css`
+  html {
+    font-size: 10px;
+  }
+
   body {
     font-family: "Poppins", "Roboto", "Helvetica Neue", sans-serif;
-    /* font-family: "Poppins", "Helvetica Neue", sans-serif; */
     -moz-osx-font-smoothing: grayscale;
     color: ${({theme}) => theme.colors.text};
   }

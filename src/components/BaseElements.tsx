@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 export const BaseUl = styled.ul`
@@ -13,4 +14,9 @@ export const BaseButton = styled.button`
   :hover {
     cursor: pointer;
   }
+`;
+
+export const BaseLink = styled(Link)`
+  color: ${({theme: {colors}}) => colors.text};
+  text-decoration: none;
 `;

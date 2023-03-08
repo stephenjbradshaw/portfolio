@@ -1,8 +1,7 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
-import {Link} from "react-router-dom";
 import styled from "styled-components";
-import {BaseButton, BaseUl} from "./BaseElements";
+import {BaseButton, BaseLink, BaseUl} from "./BaseElements";
 
 const Container = styled.div`
   position: absolute;
@@ -10,11 +9,8 @@ const Container = styled.div`
   z-index: 1;
   height: calc(100% - ${({theme: {spacing}}) => spacing.headerHeight});
   width: 100%;
-
   display: flex;
   flex-direction: column;
-  grid-template-rows: 1fr auto auto;
-
   background-color: ${({theme: {colors}}) => colors.background};
 `;
 
@@ -22,32 +18,33 @@ const Nav = styled.nav`
   flex-grow: 1;
 
   ul {
-    list-style-type: none;
-    padding: 0;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
     gap: 4vw;
-
-    a {
-      text-align: center;
-      text-decoration: none;
-    }
   }
+`;
+
+const NavLink = styled(BaseLink)`
+  font-size: 3.5rem;
 `;
 
 const SocialLinks = styled(BaseUl)`
   display: flex;
   justify-content: center;
   gap: 4vw;
+  margin-bottom: 4vw;
+  font-size: 2rem;
 `;
 
 const LangSelector = styled(BaseUl)`
   display: flex;
   justify-content: center;
   gap: 1vw;
+  margin-bottom: 4vw;
+  font-size: 2rem;
 `;
 
 interface LangButtonProps {
@@ -60,10 +57,11 @@ const LangButton = styled(BaseButton)<LangButtonProps>`
 
 interface Props {
   isOpen: boolean;
+  toggleMenu: () => void;
 }
 
 const HeaderMenu = (props: Props) => {
-  const {isOpen} = props;
+  const {isOpen, toggleMenu} = props;
 
   const {i18n, t} = useTranslation();
 
@@ -73,13 +71,19 @@ const HeaderMenu = (props: Props) => {
         <Nav>
           <ul>
             <li>
-              <Link to={`about`}>{t("ABOUT")}</Link>
+              <NavLink to={`about`} onClick={toggleMenu}>
+                {t("ABOUT")}
+              </NavLink>
             </li>
             <li>
-              <Link to={`projects`}>{t("PROJECTS")}</Link>
+              <NavLink to={`projects`} onClick={toggleMenu}>
+                {t("PROJECTS")}
+              </NavLink>
             </li>
             <li>
-              <Link to={`contact`}>{t("CONTACT")}</Link>
+              <NavLink to={`contact`} onClick={toggleMenu}>
+                {t("CONTACT")}
+              </NavLink>
             </li>
           </ul>
         </Nav>
@@ -96,7 +100,7 @@ const HeaderMenu = (props: Props) => {
           </li>
         </SocialLinks>
         {/* Language selector */}
-        <LangSelector>
+        <LangSelector aria-label={t<string>("LANGUAGE")}>
           <li>
             <LangButton
               onClick={() => i18n.changeLanguage("en-GB")}
