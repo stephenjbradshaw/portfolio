@@ -1,7 +1,8 @@
-import React from "react";
 import {useTranslation} from "react-i18next";
 import styled from "styled-components";
-import {BaseButton, BaseLink, BaseUl} from "./BaseElements";
+import {BaseLink} from "./BaseElements";
+import LangSelect from "./LangSelect";
+import SocialLinks from "./SocialLinks";
 
 const Container = styled.div`
   position: absolute;
@@ -31,30 +32,6 @@ const NavLink = styled(BaseLink)`
   font-size: 3.5rem;
 `;
 
-const SocialLinks = styled(BaseUl)`
-  display: flex;
-  justify-content: center;
-  gap: 4vw;
-  margin-bottom: 4vw;
-  font-size: 2rem;
-`;
-
-const LangSelector = styled(BaseUl)`
-  display: flex;
-  justify-content: center;
-  gap: 1vw;
-  margin-bottom: 4vw;
-  font-size: 2rem;
-`;
-
-interface LangButtonProps {
-  isSelected: boolean;
-}
-
-const LangButton = styled(BaseButton)<LangButtonProps>`
-  font-weight: ${({isSelected}) => (isSelected ? "bold" : "normal")};
-`;
-
 interface Props {
   isOpen: boolean;
   toggleMenu: () => void;
@@ -63,7 +40,7 @@ interface Props {
 const HeaderMenu = (props: Props) => {
   const {isOpen, toggleMenu} = props;
 
-  const {i18n, t} = useTranslation();
+  const {t} = useTranslation();
 
   if (isOpen)
     return (
@@ -87,38 +64,8 @@ const HeaderMenu = (props: Props) => {
             </li>
           </ul>
         </Nav>
-        {/* Social links */}
-        <SocialLinks>
-          <li>
-            <i className="fa-brands fa-github"></i>
-          </li>
-          <li>
-            <i className="fa-brands fa-linkedin"></i>
-          </li>
-          <li>
-            <i className="fa-brands fa-instagram"></i>
-          </li>
-        </SocialLinks>
-        {/* Language selector */}
-        <LangSelector aria-label={t<string>("LANGUAGE")}>
-          <li>
-            <LangButton
-              onClick={() => i18n.changeLanguage("en-GB")}
-              isSelected={i18n.resolvedLanguage === "en-GB"}
-            >
-              EN
-            </LangButton>
-          </li>
-          <div aria-hidden={true}>|</div>
-          <li>
-            <LangButton
-              onClick={() => i18n.changeLanguage("de-DE")}
-              isSelected={i18n.resolvedLanguage === "de-DE"}
-            >
-              DE
-            </LangButton>
-          </li>
-        </LangSelector>
+        <SocialLinks />
+        <LangSelect />
       </Container>
     );
   else return null;
