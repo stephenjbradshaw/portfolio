@@ -56,9 +56,8 @@ const cssReset = css`
 
 const typography = css`
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-      "Helvetica Neue", sans-serif;
+    font-family: "Poppins", "Roboto", "Helvetica Neue", sans-serif;
+    /* font-family: "Poppins", "Helvetica Neue", sans-serif; */
     -moz-osx-font-smoothing: grayscale;
     color: ${({theme}) => theme.colors.text};
   }
