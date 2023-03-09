@@ -8,7 +8,7 @@ interface ContainerProps {
 }
 
 const Container = styled.div<ContainerProps>`
-  visibility: ${({isOpen}) => (isOpen ? "show" : "hidden")};
+  visibility: ${({isOpen}) => (isOpen ? "visible" : "hidden")};
   opacity: ${({isOpen}) => (isOpen ? 1 : 0)};
   transition: visibility 600ms ease, opacity 400ms ease;
   position: absolute;

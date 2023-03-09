@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import styled from "styled-components";
 import {BaseLink} from "./BaseElements";
@@ -29,6 +29,15 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
   const isHome = pathname === "/";
+
+  // Block scroll
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [isMenuOpen]);
 
   return (
     <header>
