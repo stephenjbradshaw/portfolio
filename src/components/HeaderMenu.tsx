@@ -3,7 +3,14 @@ import LangSelect from "./LangSelect";
 import Nav from "./Nav";
 import SocialLinks from "./SocialLinks";
 
-const Container = styled.div`
+interface ContainerProps {
+  isOpen: boolean;
+}
+
+const Container = styled.div<ContainerProps>`
+  visibility: ${({isOpen}) => (isOpen ? "show" : "hidden")};
+  opacity: ${({isOpen}) => (isOpen ? 1 : 0)};
+  transition: visibility 600ms ease, opacity 400ms ease;
   position: absolute;
   z-index: 1;
   top: 0;
@@ -14,6 +21,17 @@ const Container = styled.div`
   gap: 4vw;
   padding-bottom: 4vw;
   background-color: ${({theme: {colors}}) => colors.background};
+
+  .social-links,
+  .lang-select {
+    transform: ${({isOpen}) => (isOpen ? "translateY(0)" : "translateY(100%)")};
+    transition: transform 400ms ease;
+  }
+
+  .nav {
+    transform: ${({isOpen}) => (isOpen ? "translateY(0)" : "translateY(5rem)")};
+    transition: transform 300ms ease;
+  }
 `;
 
 interface Props {
@@ -22,15 +40,13 @@ interface Props {
 }
 
 const HeaderMenu = ({isOpen, toggleMenu}: Props) => {
-  if (isOpen)
-    return (
-      <Container>
-        <Nav toggleMenu={toggleMenu} />
-        <SocialLinks fontSize="2.5rem" />
-        <LangSelect fontSize="2rem" />
-      </Container>
-    );
-  else return null;
+  return (
+    <Container isOpen={isOpen}>
+      <Nav toggleMenu={toggleMenu} />
+      <SocialLinks fontSize="2.5rem" />
+      <LangSelect fontSize="2rem" />
+    </Container>
+  );
 };
 
 export default HeaderMenu;

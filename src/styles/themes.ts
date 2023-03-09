@@ -1,6 +1,6 @@
 const common = {
   spacing: {
-    headerHeight: "5rem",
+    headerHeight: "7rem",
     sideMargin: "4vw",
   },
 };

@@ -19,7 +19,7 @@ interface Props {
 
 const SocialLinks = ({fontSize}: Props) => {
   return (
-    <Ul fontSize={fontSize}>
+    <Ul fontSize={fontSize} className="social-links">
       <li>
         <BaseLink to={GITHUB} target="_blank" rel="noreferrer">
           <i className="fa-brands fa-github"></i>

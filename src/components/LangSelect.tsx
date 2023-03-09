@@ -29,7 +29,11 @@ const LangSelect = ({fontSize}: Props) => {
   const {t, i18n} = useTranslation();
 
   return (
-    <Ul aria-label={t<string>("LANGUAGE")} fontSize={fontSize}>
+    <Ul
+      className="lang-select"
+      aria-label={t<string>("LANGUAGE")}
+      fontSize={fontSize}
+    >
       <li>
         <LangButton
           onClick={() => i18n.changeLanguage("en-GB")}

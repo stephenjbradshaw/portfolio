@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {useLocation} from "react-router-dom";
 import styled from "styled-components";
 import {BaseLink} from "./BaseElements";
 import BurgerButton from "./BurgerButton";
@@ -23,13 +24,15 @@ const HeaderContent = styled.header<HeaderContentProps>`
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {pathname} = useLocation();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
+  const isHome = pathname === "/";
 
   return (
     <header>
-      <HeaderContent isLightText={!isMenuOpen}>
+      <HeaderContent isLightText={isHome && !isMenuOpen}>
         <BaseLink to={`/`} onClick={closeMenu}>
           {"Stephen Bradshaw"}
         </BaseLink>

@@ -42,7 +42,7 @@ const Nav = ({toggleMenu, isFooter}: Props) => {
   const {t} = useTranslation();
 
   return (
-    <NavElement isFooter={isFooter}>
+    <NavElement className="nav" isFooter={isFooter}>
       <ul>
         <li>
           <BaseLink to={`about`} onClick={toggleMenu}>
