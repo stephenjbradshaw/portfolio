@@ -11,12 +11,13 @@ export const BaseButton = styled.button`
   padding: 0;
   background-color: unset;
   border: none;
+  color: inherit;
   :hover {
     cursor: pointer;
   }
 `;
 
 export const BaseLink = styled(Link)`
-  color: ${({theme: {colors}}) => colors.text};
+  color: inherit;
   text-decoration: none;
 `;

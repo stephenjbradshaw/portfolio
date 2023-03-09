@@ -5,9 +5,9 @@ import SocialLinks from "./SocialLinks";
 
 const Container = styled.div`
   position: absolute;
-  top: ${({theme: {spacing}}) => spacing.headerHeight};
   z-index: 1;
-  height: calc(100% - ${({theme: {spacing}}) => spacing.headerHeight});
+  top: 0;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;

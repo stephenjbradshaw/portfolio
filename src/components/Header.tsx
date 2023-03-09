@@ -4,12 +4,21 @@ import {BaseLink} from "./BaseElements";
 import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
 
-const HeaderContent = styled.header`
+interface HeaderContentProps {
+  isLightText: boolean;
+}
+
+const HeaderContent = styled.header<HeaderContentProps>`
+  position: relative;
+  z-index: 2;
+  height: ${({theme: {spacing}}) => spacing.headerHeight};
+  margin: 0 ${({theme: {spacing}}) => spacing.sideMargin};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: ${({theme: {spacing}}) => spacing.headerHeight};
   font-size: 2.7rem;
+  color: ${({isLightText, theme: {colors}}) =>
+    isLightText ? colors.textLight : colors.text};
 `;
 
 const Header = () => {
@@ -20,7 +29,7 @@ const Header = () => {
 
   return (
     <header>
-      <HeaderContent>
+      <HeaderContent isLightText={!isMenuOpen}>
         <BaseLink to={`/`} onClick={closeMenu}>
           {"Stephen Bradshaw"}
         </BaseLink>

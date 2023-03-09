@@ -8,6 +8,8 @@ const FooterElement = styled.footer`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  padding-bottom: 2vw;
+  margin: 0 ${({theme: {spacing}}) => spacing.sideMargin};
 `;
 
 const Name = styled.p`

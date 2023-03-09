@@ -1,8 +1,6 @@
-import {useTranslation} from "react-i18next";
+import HeadlineSection from "../components/HeadlineSection";
 
 const Home = () => {
-  const {t} = useTranslation();
-
   /*
   Contents:
   - Image and headline
@@ -10,15 +8,7 @@ const Home = () => {
   - Small about section
   */
 
-  return (
-    <div>
-      {t("HOMEPAGE")} Other homepage content Other homepage content Other
-      homepage content Other homepage content Other homepage content Other
-      homepage content Other homepage content Other homepage content Other
-      homepage content Other homepage content Other homepage content v Other
-      homepage content Other homepage content xv Other homepage content{" "}
-    </div>
-  );
+  return <HeadlineSection />;
 };
 
 export default Home;
