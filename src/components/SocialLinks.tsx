@@ -2,17 +2,24 @@ import styled from "styled-components";
 import {GITHUB, INSTAGRAM, LINKEDIN} from "../constants/URL";
 import {BaseLink, BaseUl} from "./BaseElements";
 
-const Ul = styled(BaseUl)`
+interface UlProps {
+  fontSize: string;
+}
+
+const Ul = styled(BaseUl)<UlProps>`
   display: flex;
   justify-content: center;
-  gap: 4vw;
-  margin-bottom: 3vw;
-  font-size: 2.5rem;
+  gap: 2.5rem;
+  font-size: ${({fontSize}) => fontSize};
 `;
 
-const SocialLinks = () => {
+interface Props {
+  fontSize: string;
+}
+
+const SocialLinks = ({fontSize}: Props) => {
   return (
-    <Ul>
+    <Ul fontSize={fontSize}>
       <li>
         <BaseLink to={GITHUB} target="_blank" rel="noreferrer">
           <i className="fa-brands fa-github"></i>

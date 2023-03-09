@@ -1,7 +1,6 @@
-import {useTranslation} from "react-i18next";
 import styled from "styled-components";
-import {BaseLink} from "./BaseElements";
 import LangSelect from "./LangSelect";
+import Nav from "./Nav";
 import SocialLinks from "./SocialLinks";
 
 const Container = styled.div`
@@ -12,24 +11,9 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 4vw;
+  padding-bottom: 4vw;
   background-color: ${({theme: {colors}}) => colors.background};
-`;
-
-const Nav = styled.nav`
-  flex-grow: 1;
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 4vw;
-  }
-`;
-
-const NavLink = styled(BaseLink)`
-  font-size: 3.5rem;
 `;
 
 interface Props {
@@ -37,35 +21,13 @@ interface Props {
   toggleMenu: () => void;
 }
 
-const HeaderMenu = (props: Props) => {
-  const {isOpen, toggleMenu} = props;
-
-  const {t} = useTranslation();
-
+const HeaderMenu = ({isOpen, toggleMenu}: Props) => {
   if (isOpen)
     return (
       <Container>
-        <Nav>
-          <ul>
-            <li>
-              <NavLink to={`about`} onClick={toggleMenu}>
-                {t("ABOUT")}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={`projects`} onClick={toggleMenu}>
-                {t("PROJECTS")}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={`contact`} onClick={toggleMenu}>
-                {t("CONTACT")}
-              </NavLink>
-            </li>
-          </ul>
-        </Nav>
-        <SocialLinks />
-        <LangSelect />
+        <Nav toggleMenu={toggleMenu} />
+        <SocialLinks fontSize="2.5rem" />
+        <LangSelect fontSize="2rem" />
       </Container>
     );
   else return null;

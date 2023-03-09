@@ -48,8 +48,9 @@ const cssReset = css`
     overflow-wrap: break-word;
   }
 
-  ul, ol {
-    padding: 0
+  ul,
+  ol {
+    padding: 0;
   }
 
   ul {

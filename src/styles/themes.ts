@@ -8,6 +8,7 @@ export const light = {
   ...common,
   colors: {
     text: "#000",
+    secondaryText: "#767676",
     background: "#FFF",
   },
 };

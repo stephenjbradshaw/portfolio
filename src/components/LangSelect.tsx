@@ -2,12 +2,15 @@ import {useTranslation} from "react-i18next";
 import styled from "styled-components";
 import {BaseButton, BaseUl} from "./BaseElements";
 
-const Ul = styled(BaseUl)`
+interface UlProps {
+  fontSize: string;
+}
+
+const Ul = styled(BaseUl)<UlProps>`
   display: flex;
   justify-content: center;
   gap: 1vw;
-  margin-bottom: 4vw;
-  font-size: 2rem;
+  font-size: ${({fontSize}) => fontSize};
 `;
 
 interface LangButtonProps {
@@ -18,11 +21,15 @@ const LangButton = styled(BaseButton)<LangButtonProps>`
   font-weight: ${({isSelected}) => (isSelected ? "bold" : "normal")};
 `;
 
-const LangSelect = () => {
+interface Props {
+  fontSize: string;
+}
+
+const LangSelect = ({fontSize}: Props) => {
   const {t, i18n} = useTranslation();
 
   return (
-    <Ul aria-label={t<string>("LANGUAGE")}>
+    <Ul aria-label={t<string>("LANGUAGE")} fontSize={fontSize}>
       <li>
         <LangButton
           onClick={() => i18n.changeLanguage("en-GB")}

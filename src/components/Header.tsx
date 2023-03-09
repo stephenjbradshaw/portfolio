@@ -1,7 +1,7 @@
 import {useState} from "react";
-import {useTranslation} from "react-i18next";
 import styled from "styled-components";
-import {BaseButton, BaseLink} from "./BaseElements";
+import {BaseLink} from "./BaseElements";
+import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
 
 const HeaderContent = styled.header`
@@ -9,50 +9,25 @@ const HeaderContent = styled.header`
   justify-content: space-between;
   align-items: center;
   height: ${({theme: {spacing}}) => spacing.headerHeight};
-  margin: 0 4vw;
-`;
-
-const NameLink = styled(BaseLink)`
-  font-size: 2.7rem;
-`;
-
-const MenuButton = styled(BaseButton)`
   font-size: 2.7rem;
 `;
 
 const Header = () => {
-  const {t} = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <>
-      <header>
-        <HeaderContent>
-          <NameLink to={`/`}>{"Stephen Bradshaw"}</NameLink>
-          <MenuButton
-            onClick={toggleMenu}
-            aria-label={`${
-              isMenuOpen ? t("CLOSE_NAV_MENU") : t("OPEN_NAV_MENU")
-            }`}
-          >
-            {isMenuOpen ? (
-              <>
-                <p className="visually-hidden">{t("CLOSE_NAV_MENU")}</p>
-                <i className="fa-solid fa-xmark"></i>
-              </>
-            ) : (
-              <>
-                <p className="visually-hidden">{t("OPEN_NAV_MENU")}</p>
-                <i className="fa-solid fa-bars"></i>
-              </>
-            )}
-          </MenuButton>
-        </HeaderContent>
-        <HeaderMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
-      </header>
-    </>
+    <header>
+      <HeaderContent>
+        <BaseLink to={`/`} onClick={closeMenu}>
+          {"Stephen Bradshaw"}
+        </BaseLink>
+        <BurgerButton toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
+      </HeaderContent>
+      <HeaderMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+    </header>
   );
 };
 
