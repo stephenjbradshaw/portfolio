@@ -34,6 +34,12 @@ const ImageOverlay = styled.div<ImageOverlayProps>`
 const Image = styled.img`
   position: relative;
   z-index: -1;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin-top: -${({theme: {spacing}}) => spacing.headerHeight};
+  object-fit: cover;
+  object-position: 75% 20%;
 `;
 
 const H1 = styled.h1`
@@ -48,7 +54,7 @@ const Headline = styled.p`
 
 const TextContainer = styled.div`
   position: absolute;
-  bottom: 40px;
+  bottom: clamp(4rem, 5vw, 8rem);
   margin: 0 ${({theme: {spacing}}) => spacing.sideMargin};
   color: ${({theme: {colors}}) => colors.lightText};
 `;
