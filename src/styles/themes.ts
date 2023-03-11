@@ -1,15 +1,15 @@
-const common = {
-  spacing: {
-    headerHeight: "7rem",
-    sideMargin: "4vw",
-  },
-  breakpoints: {
-    mobile: "425px",
-  },
+export const breakpoints = {
+  mobile: "600px",
+};
+
+const spacing = {
+  headerHeight: "7rem",
+  sideMargin: "4vw",
 };
 
 export const light = {
-  ...common,
+  breakpoints,
+  spacing,
   colors: {
     text: "#000",
     lightText: "#FFF",
@@ -19,6 +19,7 @@ export const light = {
 };
 
 export const dark = {
-  ...common,
+  breakpoints,
+  spacing,
   colors: {},
 };

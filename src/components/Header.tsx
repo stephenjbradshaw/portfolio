@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
+import {useMediaQuery} from "react-responsive";
 import {useLocation} from "react-router-dom";
 import styled from "styled-components";
+import {breakpoints} from "../styles/themes";
 import {BaseLink} from "./BaseElements";
 import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
@@ -26,6 +28,9 @@ const HeaderContent = styled.header<HeaderContentProps>`
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {pathname} = useLocation();
+  const isDesktop = useMediaQuery({
+    query: `(min-width: ${breakpoints.mobile})`,
+  });
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);

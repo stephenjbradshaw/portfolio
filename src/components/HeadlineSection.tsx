@@ -1,15 +1,34 @@
 import {useTranslation} from "react-i18next";
-import styled from "styled-components";
-import headshot from "../images/headshot.webp";
+import {useMediaQuery} from "react-responsive";
+import styled, {css} from "styled-components";
+import {breakpoints} from "../styles/themes";
+import headshotPortrait from "../images/headshotPortrait.webp";
+import headshotLandscape from "../images/headshotLandscape.webp";
 
 const Section = styled.section`
   position: relative;
 `;
 
-const ImageOverlay = styled.div`
+const linearGradient = css`
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 90%);
+`;
+
+const radialGradient = css`
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+`;
+
+interface ImageOverlayProps {
+  isLandscape: boolean;
+}
+
+const ImageOverlay = styled.div<ImageOverlayProps>`
   width: 100%;
   margin-top: -${({theme: {spacing}}) => spacing.headerHeight};
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 90%);
+  ${({isLandscape}) => (isLandscape ? radialGradient : linearGradient)}
 `;
 
 const Image = styled.img`
@@ -36,11 +55,17 @@ const TextContainer = styled.div`
 
 const HeadlineSection = () => {
   const {t} = useTranslation();
+  const isDesktop = useMediaQuery({
+    query: `(min-width: ${breakpoints.mobile})`,
+  });
 
   return (
     <Section>
-      <ImageOverlay>
-        <Image src={headshot} alt="Stephen Bradshaw headshot" />
+      <ImageOverlay isLandscape={isDesktop}>
+        <Image
+          src={isDesktop ? headshotLandscape : headshotPortrait}
+          alt="Stephen Bradshaw headshot"
+        />
       </ImageOverlay>
       <TextContainer>
         <H1>Stephen Bradshaw</H1>
