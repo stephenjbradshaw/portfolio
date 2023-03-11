@@ -12,16 +12,12 @@ const FooterElement = styled.footer`
   margin: 0 ${({theme: {spacing}}) => spacing.sideMargin};
 `;
 
-const Name = styled.p`
-  font-size: 1.7rem;
-`;
-
 const Footer = () => {
   return (
     <FooterElement>
-      <Name>Stephen Bradshaw</Name>
+      <p>Stephen Bradshaw</p>
       <SocialLinks fontSize="2rem" />
-      <LangSelect fontSize="1.7rem" />
+      <LangSelect fontSize="1.6rem" />
       <Nav isFooter />
     </FooterElement>
   );

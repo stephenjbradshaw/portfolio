@@ -18,8 +18,9 @@ const HeaderContent = styled.header<HeaderContentProps>`
   justify-content: space-between;
   align-items: center;
   font-size: 2.7rem;
+  font-size: clamp(2.5rem, 5vw, 2.8rem);
   color: ${({isLightText, theme: {colors}}) =>
-    isLightText ? colors.textLight : colors.text};
+    isLightText ? colors.lightText : colors.text};
 `;
 
 const Header = () => {
@@ -30,7 +31,7 @@ const Header = () => {
   const closeMenu = () => setIsMenuOpen(false);
   const isHome = pathname === "/";
 
-  // Block scroll
+  // Block scroll when nav menu open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -43,7 +44,7 @@ const Header = () => {
     <header>
       <HeaderContent isLightText={isHome && !isMenuOpen}>
         <BaseLink to={`/`} onClick={closeMenu}>
-          {"Stephen Bradshaw"}
+          Stephen Bradshaw
         </BaseLink>
         <BurgerButton toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
       </HeaderContent>

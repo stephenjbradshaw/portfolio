@@ -74,12 +74,26 @@ const typography = css`
     color: ${({theme}) => theme.colors.text};
   }
 
+  h1 {
+    font-size: 5rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1.6rem;
+  }
+
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
   }
+`;
 
-  .visually-hidden {
+export const GlobalStyle = createGlobalStyle`
+${cssReset}
+${typography}
+
+.visually-hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
     height: 1px;
@@ -88,9 +102,4 @@ const typography = css`
     white-space: nowrap;
     width: 1px;
   }
-`;
-
-export const GlobalStyle = createGlobalStyle`
-${cssReset}
-${typography}
 `;
