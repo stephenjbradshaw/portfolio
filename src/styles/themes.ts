@@ -15,6 +15,11 @@ export const light = {
     lightText: "#FFF",
     secondaryText: "#767676",
     background: "#FFF",
+    orange: "#FDC043",
+    green: "#53774B",
+    navy: "#2A324B",
+    red: "#FF6B6B",
+    blue: "#51B6DB",
   },
 };
 

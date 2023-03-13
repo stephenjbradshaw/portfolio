@@ -22,12 +22,12 @@ const Container = styled.div<ContainerProps>`
   padding-bottom: 4vw;
   background-color: ${({theme: {colors}}) => colors.background};
 
+  // Animations
   .social-links,
   .lang-select {
     transform: ${({isOpen}) => (isOpen ? "translateY(0)" : "translateY(100%)")};
     transition: transform 400ms ease;
   }
-
   .nav {
     transform: ${({isOpen}) => (isOpen ? "translateY(0)" : "translateY(5rem)")};
     transition: transform 300ms ease;
