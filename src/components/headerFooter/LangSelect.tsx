@@ -1,6 +1,6 @@
 import {useTranslation} from "react-i18next";
 import styled from "styled-components";
-import {BaseButton, BaseUl} from "./BaseElements";
+import {BaseButton, BaseUl} from "../BaseElements";
 
 interface UlProps {
   fontSize: string;

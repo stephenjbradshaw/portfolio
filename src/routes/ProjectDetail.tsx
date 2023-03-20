@@ -3,7 +3,7 @@ import {BLOCKS, Node} from "@contentful/rich-text-types";
 import {useContext} from "react";
 import {useParams} from "react-router-dom";
 import Loader from "../components/Loader";
-import {DataContext} from "../DataContext";
+import {DataContext} from "../data/DataContext";
 
 const renderOptions = {
   renderNode: {

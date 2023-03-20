@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BaseLink, BaseUl} from "./BaseElements";
+import {BaseLink, BaseUl} from "../BaseElements";
 
 interface UlProps {
   fontSize: string;

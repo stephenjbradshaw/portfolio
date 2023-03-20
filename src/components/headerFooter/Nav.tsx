@@ -1,7 +1,7 @@
 import {useTranslation} from "react-i18next";
 import styled, {css} from "styled-components";
-import {BaseLink} from "./BaseElements";
-import {ReactComponent as UnderlineSVG} from "../images/underline.svg";
+import {BaseLink} from "../BaseElements";
+import {ReactComponent as UnderlineSVG} from "../../images/underline.svg";
 import {useLocation} from "react-router-dom";
 
 const FooterStyle = css`

@@ -1,7 +1,7 @@
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import Loader from "../components/Loader";
-import useGetEntries from "../hooks/useGetEntries";
+import useGetEntries from "../data/useGetEntries";
 import {IProjectFields} from "../schema/generated/contentful";
 
 const Projects = () => {

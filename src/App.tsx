@@ -4,7 +4,7 @@ import Home from "./routes/Home";
 import ProjectDetail from "./routes/ProjectDetail";
 import Layout from "./routes/Layout";
 import "./i18n/i18n";
-import Projects from "./routes/Projects";
+// import Projects from "./routes/Projects";
 import Contact from "./routes/Contact";
 import About from "./routes/About";
 

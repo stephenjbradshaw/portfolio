@@ -1,14 +1,13 @@
 import HeadlineSection from "../components/home/HeadlineSection";
+import ProjectsSection from "../components/home/ProjectsSection";
 
 const Home = () => {
-  /*
-  Contents:
-  - Image and headline
-  - Cards of some selected projects
-  - Small about section
-  */
-
-  return <HeadlineSection />;
+  return (
+    <>
+      <HeadlineSection />
+      <ProjectsSection />
+    </>
+  );
 };
 
 export default Home;

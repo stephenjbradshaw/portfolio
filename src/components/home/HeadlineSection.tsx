@@ -1,9 +1,9 @@
-import { useTranslation } from "react-i18next";
-import { useMediaQuery } from "react-responsive";
-import styled, { css } from "styled-components";
+import {useContext} from "react";
+import {useTranslation} from "react-i18next";
+import styled, {css} from "styled-components";
+import {DataContext} from "../../data/DataContext";
 import headshotLandscape from "../../images/headshotLandscape.webp";
 import headshotPortrait from "../../images/headshotPortrait.webp";
-import { breakpoints } from "../../styles/themes";
 
 const Section = styled.section`
   position: relative;
@@ -61,9 +61,7 @@ const TextContainer = styled.div`
 
 const HeadlineSection = () => {
   const {t} = useTranslation();
-  const isDesktop = useMediaQuery({
-    query: `(min-width: ${breakpoints.mobile})`,
-  });
+  const {isDesktop} = useContext(DataContext);
 
   return (
     <Section>

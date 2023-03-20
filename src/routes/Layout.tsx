@@ -1,32 +1,22 @@
 import {Outlet} from "react-router-dom";
 import {ThemeProvider} from "styled-components";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import {DataContext} from "../DataContext";
-import useGetEntries from "../hooks/useGetEntries";
-import {IProjectFields} from "../schema/generated/contentful";
+import DataService from "../data/DataService";
+import Footer from "../components/headerFooter/Footer";
+import Header from "../components/headerFooter/Header";
 import {GlobalStyle} from "../styles/global";
 import {light} from "../styles/themes";
 
 const Layout = () => {
-  const {
-    data: featuredProjects,
-    isLoading,
-    isError,
-  } = useGetEntries<IProjectFields>({contentType: "project", isFeatured: true});
-
-  console.log(featuredProjects);
-
   return (
     <ThemeProvider theme={light}>
       <GlobalStyle />
-      <DataContext.Provider value={{featuredProjects, isLoading, isError}}>
+      <DataService>
         <Header />
         <main>
           <Outlet />
         </main>
         <Footer />
-      </DataContext.Provider>
+      </DataService>
     </ThemeProvider>
   );
 };

@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next";
-import {BaseButton} from "./BaseElements";
+import {BaseButton} from "../BaseElements";
 
 interface Props {
   toggleMenu: () => void;
