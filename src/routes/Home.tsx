@@ -1,4 +1,4 @@
-import HeadlineSection from "../components/HeadlineSection";
+import HeadlineSection from "../components/home/HeadlineSection";
 
 const Home = () => {
   /*

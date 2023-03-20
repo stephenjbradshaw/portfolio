@@ -1,9 +1,9 @@
-import {useTranslation} from "react-i18next";
-import {useMediaQuery} from "react-responsive";
-import styled, {css} from "styled-components";
-import {breakpoints} from "../styles/themes";
-import headshotPortrait from "../images/headshotPortrait.webp";
-import headshotLandscape from "../images/headshotLandscape.webp";
+import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
+import styled, { css } from "styled-components";
+import headshotLandscape from "../../images/headshotLandscape.webp";
+import headshotPortrait from "../../images/headshotPortrait.webp";
+import { breakpoints } from "../../styles/themes";
 
 const Section = styled.section`
   position: relative;
