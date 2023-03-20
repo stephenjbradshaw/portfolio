@@ -1,9 +1,9 @@
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import {BLOCKS, Node} from "@contentful/rich-text-types";
+import {useContext} from "react";
 import {useParams} from "react-router-dom";
 import Loader from "../components/Loader";
-import useGetEntries from "../hooks/useGetEntries";
-import {IProjectFields} from "../schema/generated/contentful";
+import {DataContext} from "../DataContext";
 
 const renderOptions = {
   renderNode: {
@@ -26,20 +26,22 @@ const renderOptions = {
 const ProjectDetail = () => {
   const {slug} = useParams();
 
-  const {data, isError, isLoading} = useGetEntries<IProjectFields>(
-    "project",
-    slug
+  const {featuredProjects, isError, isLoading} = useContext(DataContext);
+
+  const project = featuredProjects.find(
+    (featuredProject) => featuredProject.fields.slug === slug
   );
 
   if (isLoading) return <Loader />;
+
   if (isError) {
     throw new Error("GENERAL_ERROR");
   }
-  if (!data || data.length === 0) {
+  if (!project) {
     throw new Error("NOT_FOUND");
   }
 
-  const {fields} = data[0];
+  const {fields} = project;
 
   return (
     <>

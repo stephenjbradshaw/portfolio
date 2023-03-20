@@ -3,8 +3,14 @@ import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {contentfulClient} from "../utils/contentful";
 
-const useGetEntries = <T>(contentType: string, slug?: string) => {
-  const [data, setData] = useState<Entry<T>[] | null>(null);
+interface Params {
+  contentType: string;
+  slug?: string;
+  isFeatured?: boolean;
+}
+
+const useGetEntries = <T>({contentType, slug, isFeatured}: Params) => {
+  const [data, setData] = useState<Entry<T>[] | []>([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,6 +26,7 @@ const useGetEntries = <T>(contentType: string, slug?: string) => {
           locale: i18n.resolvedLanguage,
           content_type: contentType,
           "fields.slug[in]": slug,
+          "fields.isFeatured": isFeatured,
         });
         const {items} = results;
         setData(items);
@@ -32,7 +39,7 @@ const useGetEntries = <T>(contentType: string, slug?: string) => {
     };
 
     fetchData();
-  }, [contentType, i18n.resolvedLanguage, slug]);
+  }, [contentType, i18n.resolvedLanguage, isFeatured, slug]);
 
   return {data, isError, isLoading};
 };

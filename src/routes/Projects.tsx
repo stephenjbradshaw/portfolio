@@ -5,7 +5,9 @@ import useGetEntries from "../hooks/useGetEntries";
 import {IProjectFields} from "../schema/generated/contentful";
 
 const Projects = () => {
-  const {data, isError, isLoading} = useGetEntries<IProjectFields>("project");
+  const {data, isError, isLoading} = useGetEntries<IProjectFields>({
+    contentType: "project",
+  });
   const {t} = useTranslation();
 
   if (isLoading) return <Loader />;
