@@ -75,7 +75,7 @@ interface NavLink {
 const NavLinks: NavLink[] = [
   {langKey: "HOME", pathname: "/", color: "green"},
   {langKey: "ABOUT", pathname: "/about", color: "orange"},
-  {langKey: "PROJECTS", pathname: "/projects", color: "blue"},
+  // {langKey: "PROJECTS", pathname: "/projects", color: "blue"},
   {langKey: "CONTACT", pathname: "/contact", color: "red"},
 ];
 
