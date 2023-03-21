@@ -74,9 +74,24 @@ const typography = css`
     color: ${({theme}) => theme.colors.text};
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 2rem 0;
+    line-height: 1.2;
+  }
+
   h1 {
     font-size: 5rem;
-    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 3.5rem;
+  }
+
+  h3 {
+    font-size: 2.8rem;
   }
 
   p {

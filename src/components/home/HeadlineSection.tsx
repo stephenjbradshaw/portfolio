@@ -43,7 +43,7 @@ const Image = styled.img`
 `;
 
 const H1 = styled.h1`
-  font-size: clamp(2.7rem, 8.5vw, 5rem);
+  font-size: clamp(3rem, 8.5vw, 6rem);
   margin-bottom: 1.5rem;
 `;
 
@@ -54,7 +54,7 @@ const Headline = styled.p`
 
 const TextContainer = styled.div`
   position: absolute;
-  bottom: clamp(4rem, 5vw, 8rem);
+  bottom: clamp(8rem, 7vw, 12rem);
   margin: 0 ${({theme: {spacing}}) => spacing.sideMargin};
   color: ${({theme: {colors}}) => colors.lightText};
 `;

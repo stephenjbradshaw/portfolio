@@ -13,12 +13,10 @@ const Section = styled.section`
 const Ul = styled(BaseUl)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(30rem, 100%), 1fr));
-  gap: ${({theme: {spacing}}) => spacing.sideMargin};
+  gap: 5vw;
 `;
 
 const Li = styled.li`
-  border: 1px solid black;
-
   img {
     width: 100%;
     height: 25rem;
