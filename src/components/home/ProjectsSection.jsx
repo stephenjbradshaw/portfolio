@@ -4,6 +4,7 @@ import {useTranslation} from "react-i18next";
 import styled from "styled-components";
 import {DataContext} from "../../data/DataContext";
 import {BaseUl, BaseLink} from "../BaseElements";
+import ErrorText from "../ErrorText";
 import Loader from "../Loader";
 
 const Section = styled.section`
@@ -29,26 +30,26 @@ const Li = styled.li`
 const ProjectsSection = () => {
   const {t} = useTranslation();
 
-  const {featuredProjects} = useContext(DataContext);
+  const {
+    featuredProjects: {data, isLoading, isError},
+  } = useContext(DataContext);
 
-  featuredProjects.data.sort(
+  data.sort(
     (a, b) =>
       (a.fields?.featuredProjectIndex ?? 0) -
       (b.fields?.featuredProjectIndex ?? 0)
   );
 
-  if (featuredProjects.isError) {
-    throw new Error("GENERAL_ERROR");
-  }
-
   return (
     <Section>
       <h2>{t("FEATURED_PROJECTS")}</h2>
-      {featuredProjects.isLoading ? (
+      {isLoading ? (
         <Loader />
+      ) : isError ? (
+        <ErrorText>{t("PROJECT_LOAD_ERROR")}</ErrorText>
       ) : (
         <Ul>
-          {featuredProjects.data.map((entry) => {
+          {data.map((entry) => {
             const {fields} = entry;
             return (
               <Li key={fields.title}>

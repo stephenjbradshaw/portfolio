@@ -1,3 +1,4 @@
+import AboutSection from "../components/home/AboutSection";
 import HeadlineSection from "../components/home/HeadlineSection";
 import ProjectsSection from "../components/home/ProjectsSection";
 
@@ -6,6 +7,7 @@ const Home = () => {
     <>
       <HeadlineSection />
       <ProjectsSection />
+      <AboutSection />
     </>
   );
 };

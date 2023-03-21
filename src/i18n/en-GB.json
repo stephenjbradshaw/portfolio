@@ -1,11 +1,11 @@
 {
   "HOME": "Home",
   "PROJECTS": "Projects",
-  "GENERAL_ERROR": "Whoops! Something went wrong. Please try again.",
+  "GENERAL_ERROR": "Whoops! Something went wrong. 😢\nPlease try again.",
   "LOADING": "Loading...",
   "CONTACT": "Contact",
   "NOT_FOUND": "Page not found.",
-  "PROJECT_LOAD_ERROR": "The project(s) could not be loaded. Please try again.",
+  "PROJECT_LOAD_ERROR": "Whoops! The project(s) could not be loaded. 😢\nPlease try again.",
   "SOMETHING_WENT_WRONG": "Something went wrong:",
   "OOPS": "Oops!",
   "ABOUT": "About",
@@ -13,5 +13,6 @@
   "CLOSE_NAV_MENU": "Close navigation menu",
   "SELECT_LANGUAGE": "Select language:",
   "HEADLINE": "Creative software engineer",
-  "FEATURED_PROJECTS": "Featured projects"
+  "FEATURED_PROJECTS": "Featured projects",
+  "A_BIT_ABOUT_ME": "A bit about me"
 }

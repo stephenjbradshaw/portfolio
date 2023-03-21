@@ -17,14 +17,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "about",
         element: <About />,
+        errorElement: <ErrorPage />,
       },
       // {
       //   path: "projects",
       //   element: <Projects />,
+      //   errorElement: <ErrorPage />,
       // },
       {
         path: "projects/:slug",
@@ -34,6 +37,7 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+        errorElement: <ErrorPage />,
       },
     ],
   },

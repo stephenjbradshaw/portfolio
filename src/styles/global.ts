@@ -72,6 +72,7 @@ const typography = css`
     font-family: "Poppins", "Roboto", "Helvetica Neue", sans-serif;
     -moz-osx-font-smoothing: grayscale;
     color: ${({theme}) => theme.colors.text};
+    white-space: pre-line;
   }
 
   h1,

@@ -1,11 +1,11 @@
 {
   "HOME": "Startseite",
   "PROJECTS": "Projekte",
-  "GENERAL_ERROR": "Schade! Etwas ist schiefgelaufen. Versuchen Sie bitte nochmal.",
+  "GENERAL_ERROR": "Hoppla! Etwas ist schiefgelaufen. 😢\nVersuchen Sie bitte nochmal.",
   "LOADING": "Laden...",
   "CONTACT": "Kontakt",
   "NOT_FOUND": "Seite nicht gefunden.",
-  "PROJECT_LOAD_ERROR": "Die Projekte konnte nicht geladen werden. Versuchen Sie bitte nochmal.",
+  "PROJECT_LOAD_ERROR": "Hoppla! Die Projekte konnte nicht geladen werden. 😢\nVersuchen Sie bitte nochmal.",
   "SOMETHING_WENT_WRONG": "Etwas ist schiefgelaufen:",
   "OOPS": "Hoppla!",
   "ABOUT": "Über mich",
@@ -13,5 +13,6 @@
   "CLOSE_NAV_MENU": "Navigationsmenü schließen",
   "SELECT_LANGUAGE": "Sprache auswählen:",
   "HEADLINE": "Kreativer Softwareentwickler",
-  "FEATURED_PROJECTS": "Vorgestellte Projekte"
+  "FEATURED_PROJECTS": "Vorgestellte Projekte",
+  "A_BIT_ABOUT_ME": "Ein Bisschen über mich"
 }
