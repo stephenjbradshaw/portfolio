@@ -29,31 +29,40 @@ const Li = styled.li`
 const ProjectsSection = () => {
   const {t} = useTranslation();
 
-  const {featuredProjects, isError, isLoading} = useContext(DataContext);
+  const {featuredProjects} = useContext(DataContext);
 
-  if (isError) {
+  featuredProjects.data.sort(
+    (a, b) =>
+      (a.fields?.featuredProjectIndex ?? 0) -
+      (b.fields?.featuredProjectIndex ?? 0)
+  );
+
+  if (featuredProjects.isError) {
     throw new Error("GENERAL_ERROR");
   }
 
   return (
     <Section>
       <h2>{t("FEATURED_PROJECTS")}</h2>
-      {isLoading ? (
+      {featuredProjects.isLoading ? (
         <Loader />
       ) : (
         <Ul>
-          {featuredProjects.map((entry) => {
+          {featuredProjects.data.map((entry) => {
             const {fields} = entry;
             return (
               <Li key={fields.title}>
-                <BaseLink to={fields.slug} state={{id: entry.sys.id}}>
+                <BaseLink
+                  to={`/projects/${fields.slug}`}
+                  state={{id: entry.sys.id}}
+                >
                   <img
                     alt={fields.mainImage.fields.title}
                     src={`${fields.mainImage.fields.file.url}?fm=webp&w=500&h=500`}
                   />
                   <h3>{fields.title}</h3>
-                  {documentToReactComponents(fields.previewText)}
                 </BaseLink>
+                {documentToReactComponents(fields.previewText)}
               </Li>
             );
           })}

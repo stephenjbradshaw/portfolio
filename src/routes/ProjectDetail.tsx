@@ -26,15 +26,15 @@ const renderOptions = {
 const ProjectDetail = () => {
   const {slug} = useParams();
 
-  const {featuredProjects, isError, isLoading} = useContext(DataContext);
+  const {featuredProjects} = useContext(DataContext);
 
-  const project = featuredProjects.find(
+  const project = featuredProjects.data.find(
     (featuredProject) => featuredProject.fields.slug === slug
   );
 
-  if (isLoading) return <Loader />;
+  if (featuredProjects.isLoading) return <Loader />;
 
-  if (isError) {
+  if (featuredProjects.isError) {
     throw new Error("GENERAL_ERROR");
   }
   if (!project) {
