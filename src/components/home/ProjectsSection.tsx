@@ -43,7 +43,7 @@ const ProjectsSection = () => {
       ) : (
         <Ul>
           {data.map((entry) => {
-            return <ProjectCard entry={entry} />;
+            return <ProjectCard key={entry.fields.title} entry={entry} />;
           })}
         </Ul>
       )}

@@ -117,6 +117,11 @@ const typography = css`
       color: inherit;
     }
   }
+
+  hr {
+    border: 0;
+    border-bottom: 1px solid grey;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`

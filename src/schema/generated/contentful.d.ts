@@ -35,6 +35,9 @@ export interface IProjectFields {
   /** Main Image */
   mainImage: Asset;
 
+  /** mainImageObjectPosition */
+  mainImageObjectPosition: string;
+
   /** Preview Text */
   previewText: Document;
 

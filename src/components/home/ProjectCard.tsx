@@ -4,14 +4,16 @@ import styled from "styled-components";
 import {IProjectFields} from "../../schema/generated/contentful";
 import {BaseLink} from "../BaseElements";
 
-const Li = styled.li`
-  img {
-    width: 100%;
-    height: 25rem;
-    object-fit: cover;
-    border-radius: 10px;
-    object-position: 50% 15%;
-  }
+interface CardImageProps {
+  objectPosition: string;
+}
+
+const CardImage = styled.img<CardImageProps>`
+  width: 100%;
+  height: 25rem;
+  object-fit: cover;
+  border-radius: 10px;
+  object-position: ${({objectPosition}) => objectPosition};
 `;
 
 interface Props {
@@ -21,16 +23,17 @@ interface Props {
 const ProjectCard = ({entry}: Props) => {
   const {fields} = entry;
   return (
-    <Li key={fields.title}>
+    <li>
       <BaseLink to={`/projects/${fields.slug}`} state={{id: entry.sys.id}}>
-        <img
+        <CardImage
           alt={fields.mainImage.fields.title}
           src={`${fields.mainImage.fields.file.url}?fm=webp&w=500&h=500`}
+          objectPosition={fields.mainImageObjectPosition}
         />
         <h3>{fields.title}</h3>
       </BaseLink>
       {documentToReactComponents(fields.previewText)}
-    </Li>
+    </li>
   );
 };
 

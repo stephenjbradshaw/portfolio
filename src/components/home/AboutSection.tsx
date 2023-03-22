@@ -9,7 +9,7 @@ import Loader from "../Loader";
 const Section = styled.section`
   margin-top: -3rem;
   padding: 8rem ${({theme: {spacing}}) => spacing.sideMargin};
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 30px 30px;
   color: ${({theme: {colors}}) => colors.lightText};
   background: ${({theme: {colors}}) => colors.darkGrey};
 `;
