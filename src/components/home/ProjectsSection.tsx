@@ -9,12 +9,18 @@ import ProjectCard from "./ProjectCard";
 
 const Section = styled.section`
   position: relative;
-  padding: 4rem ${({theme: {spacing}}) => spacing.sideMargin};
+  padding: 2rem ${({theme: {spacing}}) => spacing.sideMargin} 6rem;
   background-color: ${({theme: {colors}}) => colors.background};
   border-radius: 0 0 30px 30px;
 `;
 
+const InnerContainer = styled.div`
+  max-width: 100rem;
+  margin: auto;
+`;
+
 const Ul = styled(BaseUl)`
+  padding-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(30rem, 100%), 1fr));
   gap: 5vw;
@@ -35,18 +41,20 @@ const ProjectsSection = () => {
 
   return (
     <Section>
-      <h2>{t("FEATURED_PROJECTS")}</h2>
-      {isLoading ? (
-        <Loader />
-      ) : isError ? (
-        <ErrorText>{t("PROJECT_LOAD_ERROR")}</ErrorText>
-      ) : (
-        <Ul>
-          {data.map((entry) => {
-            return <ProjectCard key={entry.fields.title} entry={entry} />;
-          })}
-        </Ul>
-      )}
+      <InnerContainer>
+        <h2>{t("FEATURED_PROJECTS")}</h2>
+        {isLoading ? (
+          <Loader />
+        ) : isError ? (
+          <ErrorText>{t("PROJECT_LOAD_ERROR")}</ErrorText>
+        ) : (
+          <Ul>
+            {data.map((entry) => {
+              return <ProjectCard key={entry.fields.title} entry={entry} />;
+            })}
+          </Ul>
+        )}
+      </InnerContainer>
     </Section>
   );
 };

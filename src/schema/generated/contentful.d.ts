@@ -32,22 +32,28 @@ export interface IProjectFields {
   /** Slug */
   slug: string;
 
-  /** Main Image */
-  mainImage: Asset;
-
-  /** mainImageObjectPosition */
-  mainImageObjectPosition: string;
-
   /** Preview Text */
   previewText: Document;
+
+  /** Card Image */
+  cardImage: Asset;
+
+  /** Card Image Object Position */
+  cardImageObjectPosition: string;
+
+  /** Main Image */
+  mainImage?: Asset | undefined;
+
+  /** Main Image Object Position */
+  mainImageObjectPosition: string;
 
   /** Body */
   body: Document;
 
-  /** isFeatured */
+  /** Featured */
   isFeatured: boolean;
 
-  /** featuredProjectIndex */
+  /** Featured Project Index */
   featuredProjectIndex?: number | undefined;
 }
 

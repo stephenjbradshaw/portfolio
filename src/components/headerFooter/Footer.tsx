@@ -1,3 +1,4 @@
+import {useLocation} from "react-router-dom";
 import styled from "styled-components";
 import LangSelect from "./LangSelect";
 import Nav from "./Nav";
@@ -8,8 +9,7 @@ const FooterElement = styled.footer`
   flex-direction: column;
   align-items: flex-start;
   gap: 2rem;
-  padding-bottom: 2vw;
-  margin: ${({theme: {spacing}}) => spacing.sideMargin};
+  padding: 4rem ${({theme: {spacing}}) => spacing.sideMargin};
 `;
 
 const Name = styled.p`
@@ -18,13 +18,19 @@ const Name = styled.p`
 `;
 
 const Footer = () => {
+  const {pathname} = useLocation();
+  const isHome = pathname === "/";
+
   return (
-    <FooterElement>
-      <Name>Stephen Bradshaw</Name>
-      <Nav isFooter />
-      <LangSelect fontSize="1.6rem" />
-      <SocialLinks fontSize="2rem" />
-    </FooterElement>
+    <>
+      {!isHome ? <hr /> : null}
+      <FooterElement>
+        <Name>Stephen Bradshaw</Name>
+        <Nav isFooter />
+        <LangSelect fontSize="1.6rem" />
+        <SocialLinks fontSize="2rem" />
+      </FooterElement>
+    </>
   );
 };
 

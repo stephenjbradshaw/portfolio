@@ -25,7 +25,6 @@ const ErrorPage = () => {
           <i>{t(error.statusText || error.message)}</i>
         </p>
       </Container>
-      <hr />
     </>
   );
 };

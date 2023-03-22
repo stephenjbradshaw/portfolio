@@ -9,8 +9,13 @@ import Loader from "../components/Loader";
 import {DataContext} from "../data/DataContext";
 
 const Article = styled.article`
-  margin: 4rem ${({theme: {spacing}}) => spacing.sideMargin};
+  padding: 0 ${({theme: {spacing}}) => spacing.sideMargin} 4rem;
+  margin: auto;
   height: 100%;
+  max-width: 99rem;
+  h2 {
+    margin: 0;
+  }
 `;
 
 interface TitleImageProps {
@@ -18,8 +23,10 @@ interface TitleImageProps {
 }
 
 const TitleImage = styled.img<TitleImageProps>`
+  margin: 4rem 0;
   width: 100%;
-  max-height: 50rem;
+  max-height: 60rem;
+  border-radius: 10px;
   object-fit: cover;
   object-position: ${({objectPosition}) => objectPosition};
 `;
@@ -62,24 +69,33 @@ const ProjectDetail = () => {
 
   const {fields} = project;
 
+  const imageProps = fields?.mainImage
+    ? {
+        alt: fields.mainImage.fields.title,
+        src: `${fields.mainImage.fields.file.url}?fm=webp&w=1300&h=1000`,
+        objectPosition: fields.mainImageObjectPosition,
+      }
+    : {
+        alt: fields.cardImage.fields.title,
+        src: `${fields.cardImage.fields.file.url}?fm=webp&w=1300&h=1000`,
+        objectPosition: fields.cardImageObjectPosition,
+      };
+
   return (
     <>
       <Article>
-        {isLoading ? <Loader /> : isError ? (
+        {isLoading ? (
+          <Loader />
+        ) : isError ? (
           <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
         ) : (
           <>
-            <h1>{fields.title}</h1>
-            <TitleImage
-              alt={fields.mainImage.fields.title}
-              src={`${fields.mainImage.fields.file.url}?fm=webp&w=1300&h=1000`}
-              objectPosition={fields.mainImageObjectPosition}
-            />
+            <h2>{fields.title}</h2>
+            <TitleImage {...imageProps} />
             {documentToReactComponents(fields.body, renderOptions)}
           </>
         )}
       </Article>
-      <hr />
     </>
   );
 };

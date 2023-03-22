@@ -10,7 +10,7 @@ interface CardImageProps {
 
 const CardImage = styled.img<CardImageProps>`
   width: 100%;
-  height: 25rem;
+  height: 23rem;
   object-fit: cover;
   border-radius: 10px;
   object-position: ${({objectPosition}) => objectPosition};
@@ -26,9 +26,9 @@ const ProjectCard = ({entry}: Props) => {
     <li>
       <BaseLink to={`/projects/${fields.slug}`} state={{id: entry.sys.id}}>
         <CardImage
-          alt={fields.mainImage.fields.title}
-          src={`${fields.mainImage.fields.file.url}?fm=webp&w=500&h=500`}
-          objectPosition={fields.mainImageObjectPosition}
+          alt={fields.cardImage.fields.title}
+          src={`${fields.cardImage.fields.file.url}?fm=webp&w=500&h=500`}
+          objectPosition={fields.cardImageObjectPosition}
         />
         <h3>{fields.title}</h3>
       </BaseLink>

@@ -30,8 +30,8 @@ const Projects = () => {
                   <Link to={fields.slug} state={{id: entry.sys.id}}>
                     <h2>{fields.title}</h2>
                     <img
-                      alt={fields.mainImage.fields.title}
-                      src={`${fields.mainImage.fields.file.url}?fm=webp&w=200&h=200`}
+                      alt={fields.cardImage.fields.title}
+                      src={`${fields.cardImage.fields.file.url}?fm=webp&w=200&h=200`}
                     />
                   </Link>
                 </li>

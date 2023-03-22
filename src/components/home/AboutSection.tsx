@@ -14,6 +14,11 @@ const Section = styled.section`
   background: ${({theme: {colors}}) => colors.darkGrey};
 `;
 
+const InnerContainer = styled.div`
+  max-width: 100rem;
+  margin: auto;
+`;
+
 const AboutSection = () => {
   const {t} = useTranslation();
 
@@ -25,14 +30,16 @@ const AboutSection = () => {
 
   return (
     <Section>
-      <h3>{t("A_BIT_ABOUT_ME")}</h3>
-      {isLoading ? (
-        <Loader />
-      ) : isError ? (
-        <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
-      ) : (
-        documentToReactComponents(fields.body)
-      )}
+      <InnerContainer>
+        <h3>{t("A_BIT_ABOUT_ME")}</h3>
+        {isLoading ? (
+          <Loader />
+        ) : isError ? (
+          <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
+        ) : (
+          documentToReactComponents(fields.body)
+        )}
+      </InnerContainer>
     </Section>
   );
 };
