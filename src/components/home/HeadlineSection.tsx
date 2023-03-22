@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import styled, {css} from "styled-components";
 import {DataContext} from "../../data/DataContext";
@@ -23,12 +23,14 @@ const radialGradient = css`
 
 interface ImageOverlayProps {
   isLandscape: boolean;
+  imageLoaded: boolean;
 }
 
 const ImageOverlay = styled.div<ImageOverlayProps>`
   width: 100%;
   margin-top: -${({theme: {spacing}}) => spacing.headerHeight};
   ${({isLandscape}) => (isLandscape ? radialGradient : linearGradient)}
+  opacity: ${({imageLoaded}) => (imageLoaded ? 1 : 0)}
 `;
 
 const Image = styled.img`
@@ -62,13 +64,15 @@ const TextContainer = styled.div`
 const HeadlineSection = () => {
   const {t} = useTranslation();
   const {isDesktop} = useContext(DataContext);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <Section>
-      <ImageOverlay isLandscape={isDesktop}>
+      <ImageOverlay isLandscape={isDesktop} imageLoaded={imageLoaded}>
         <Image
           src={isDesktop ? headshotLandscape : headshotPortrait}
           alt="Stephen Bradshaw headshot"
+          onLoad={() => setImageLoaded(true)}
         />
       </ImageOverlay>
       <TextContainer>

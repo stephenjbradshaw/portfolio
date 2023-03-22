@@ -1,5 +1,5 @@
 export const breakpoints = {
-  mobile: "600px",
+  mobile: "800px",
 };
 
 const spacing = {
