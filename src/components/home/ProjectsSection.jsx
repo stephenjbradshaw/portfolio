@@ -1,11 +1,11 @@
-import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import styled from "styled-components";
 import {DataContext} from "../../data/DataContext";
-import {BaseUl, BaseLink} from "../BaseElements";
+import {BaseUl} from "../BaseElements";
 import ErrorText from "../ErrorText";
 import Loader from "../Loader";
+import ProjectCard from "./ProjectCard";
 
 const Section = styled.section`
   position: relative;
@@ -18,16 +18,6 @@ const Ul = styled(BaseUl)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(30rem, 100%), 1fr));
   gap: 5vw;
-`;
-
-const Li = styled.li`
-  img {
-    width: 100%;
-    height: 25rem;
-    object-fit: cover;
-    border-radius: 10px;
-    object-position: 50% 15%;
-  }
 `;
 
 const ProjectsSection = () => {
@@ -53,22 +43,7 @@ const ProjectsSection = () => {
       ) : (
         <Ul>
           {data.map((entry) => {
-            const {fields} = entry;
-            return (
-              <Li key={fields.title}>
-                <BaseLink
-                  to={`/projects/${fields.slug}`}
-                  state={{id: entry.sys.id}}
-                >
-                  <img
-                    alt={fields.mainImage.fields.title}
-                    src={`${fields.mainImage.fields.file.url}?fm=webp&w=500&h=500`}
-                  />
-                  <h3>{fields.title}</h3>
-                </BaseLink>
-                {documentToReactComponents(fields.previewText)}
-              </Li>
-            );
+            return <ProjectCard entry={entry} />;
           })}
         </Ul>
       )}
