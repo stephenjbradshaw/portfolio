@@ -111,6 +111,12 @@ const typography = css`
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
   }
+
+  a {
+    :visited {
+      color: inherit;
+    }
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`

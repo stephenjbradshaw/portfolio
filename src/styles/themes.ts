@@ -3,7 +3,7 @@ export const breakpoints = {
 };
 
 const spacing = {
-  headerHeight: "7rem",
+  headerHeight: "9rem",
   sideMargin: "4vw",
 };
 
@@ -15,6 +15,8 @@ export const light = {
     lightText: "#FFF",
     secondaryText: "#767676",
     background: "#FFF",
+    lightGrey: "#A8A6A1",
+    darkGrey: "#38383B",
     orange: "#FDC043",
     green: "#53774B",
     navy: "#2A324B",

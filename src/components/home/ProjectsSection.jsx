@@ -8,7 +8,10 @@ import ErrorText from "../ErrorText";
 import Loader from "../Loader";
 
 const Section = styled.section`
-  margin: 0 ${({theme: {spacing}}) => spacing.sideMargin};
+  position: relative;
+  padding: 4rem ${({theme: {spacing}}) => spacing.sideMargin};
+  background-color: ${({theme: {colors}}) => colors.background};
+  border-radius: 0 0 30px 30px;
 `;
 
 const Ul = styled(BaseUl)`

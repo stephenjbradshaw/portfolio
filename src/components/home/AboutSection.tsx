@@ -7,7 +7,11 @@ import ErrorText from "../ErrorText";
 import Loader from "../Loader";
 
 const Section = styled.section`
-  margin: 0 ${({theme: {spacing}}) => spacing.sideMargin};
+  margin-top: -3rem;
+  padding: 8rem ${({theme: {spacing}}) => spacing.sideMargin};
+  border-radius: 0 0 15px 15px;
+  color: ${({theme: {colors}}) => colors.lightText};
+  background: ${({theme: {colors}}) => colors.darkGrey};
 `;
 
 const AboutSection = () => {
