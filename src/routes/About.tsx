@@ -6,7 +6,7 @@ import ErrorText from "../components/ErrorText";
 import Loader from "../components/Loader";
 import {DataContext} from "../data/DataContext";
 
-const Article = styled.article`
+const Section = styled.section`
   padding: 0 ${({theme: {spacing}}) => spacing.sideMargin} 4rem;
   margin: auto;
   height: 100%;
@@ -27,7 +27,7 @@ const About = () => {
 
   return (
     <>
-      <Article>
+      <Section>
         {isLoading ? (
           <Loader />
         ) : isError ? (
@@ -38,7 +38,7 @@ const About = () => {
             {documentToReactComponents(fields.body)}
           </>
         )}
-      </Article>
+      </Section>
     </>
   );
 };
