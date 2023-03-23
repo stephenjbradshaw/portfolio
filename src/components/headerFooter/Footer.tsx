@@ -1,4 +1,3 @@
-import {useLocation} from "react-router-dom";
 import styled from "styled-components";
 import LangSelect from "./LangSelect";
 import Nav from "./Nav";
@@ -18,12 +17,8 @@ const Name = styled.p`
 `;
 
 const Footer = () => {
-  const {pathname} = useLocation();
-  const isHome = pathname === "/";
-
   return (
     <>
-      {/* {!isHome ? <hr /> : null} */}
       <FooterElement>
         <Name>Stephen Bradshaw</Name>
         <Nav isFooter />
