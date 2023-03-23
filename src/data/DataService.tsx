@@ -1,6 +1,7 @@
 import {ReactNode} from "react";
 import {useMediaQuery} from "react-responsive";
 import {
+  IAboutPageFields,
   IAboutSectionFields,
   IProjectFields,
 } from "../schema/generated/contentful";
@@ -22,6 +23,10 @@ const DataService = ({children}: Props) => {
     contentType: "aboutSection",
   });
 
+  const aboutPage = useGetEntries<IAboutPageFields>({
+    contentType: "aboutPage",
+  });
+
   const isDesktop = useMediaQuery({
     query: `(min-width: ${breakpoints.mobile})`,
   });
@@ -31,6 +36,7 @@ const DataService = ({children}: Props) => {
       value={{
         featuredProjects,
         aboutSection,
+        aboutPage,
         isDesktop,
       }}
     >

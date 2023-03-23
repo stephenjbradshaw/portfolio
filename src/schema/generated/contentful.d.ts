@@ -3,6 +3,28 @@
 import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
+export interface IAboutPageFields {
+  /** body */
+  body: Document;
+}
+
+export interface IAboutPage extends Entry<IAboutPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "aboutPage";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface IAboutSectionFields {
   /** body */
   body: Document;
@@ -74,9 +96,9 @@ export interface IProject extends Entry<IProjectFields> {
   };
 }
 
-export type CONTENT_TYPE = "aboutSection" | "project";
+export type CONTENT_TYPE = "aboutPage" | "aboutSection" | "project";
 
-export type IEntry = IAboutSection | IProject;
+export type IEntry = IAboutPage | IAboutSection | IProject;
 
 export type LOCALE_CODE = "de-DE" | "en-GB";
 
