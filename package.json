@@ -58,6 +58,5 @@
     "customize-cra": "^1.0.0",
     "dotenv": "^16.0.3",
     "react-app-rewired": "^2.2.1"
-  },
-  "homepage": "https://www.stephenbradshaw.dev"
+  }
 }
