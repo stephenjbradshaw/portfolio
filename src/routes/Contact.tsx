@@ -4,19 +4,23 @@ import {BaseUl} from "../components/BaseElements";
 
 const Section = styled.section`
   padding: 0 ${({theme: {spacing}}) => spacing.sideMargin} 4rem;
-  margin: auto;
+  margin: auto auto;
   height: 100%;
   max-width: 99rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   h2 {
     margin-top: 0;
   }
 `;
 
 const Ul = styled(BaseUl)`
-  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  align-items: center;
 `;
 
 const Li = styled.li`

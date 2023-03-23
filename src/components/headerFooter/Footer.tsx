@@ -23,7 +23,7 @@ const Footer = () => {
 
   return (
     <>
-      {!isHome ? <hr /> : null}
+      {/* {!isHome ? <hr /> : null} */}
       <FooterElement>
         <Name>Stephen Bradshaw</Name>
         <Nav isFooter />
