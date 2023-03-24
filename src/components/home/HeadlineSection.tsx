@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import styled, {css} from "styled-components";
 import {DataContext} from "../../data/DataContext";
@@ -82,6 +82,10 @@ const HeadlineSection = () => {
 
   const [isLoadingImage, setIsLoadingImage] = useState(true);
 
+  useEffect(() => {
+    setIsLoadingImage(true);
+  }, [isDesktop]);
+
   const imageSettings = "?fm=webp&q=50";
 
   const landscapeUrl = data[0]?.fields
@@ -98,47 +102,72 @@ const HeadlineSection = () => {
   return (
     <>
       <Section>
-        {/* {TODO Match breakpoints} */}
         <ImageOverlay isLandscape={isDesktop}>
-          <StyledBlurhash
-            hash={isDesktop ? landscapeBlurhash : portraitBlurhash}
-            height="100vh"
-            width="100%"
-            $isLoadingImage={isLoadingData || isLoadingImage}
-          />
-          <picture>
-            {/* Landscape image */}
-            <source
-              srcSet={`${landscapeUrl}&w=1920`}
-              media="(min-width: 1600px)"
-            />
-            <source
-              srcSet={`${landscapeUrl}&w=1600`}
-              media="(min-width: 1366px)"
-            />
-            <source
-              srcSet={`${landscapeUrl}&w=1366`}
-              media="(min-width: 1024px)"
-            />
-            <source
-              srcSet={`${landscapeUrl}&w=1024`}
-              media="(min-width: 768px)"
-            />
-            {/* Portrait image */}
-            <source
-              srcSet={`${portraitUrl}&w=768`}
-              media="(min-width: 640px)"
-            />
-            <source
-              srcSet={`${portraitUrl}&w=640`}
-              media="(min-width: 320px)"
-            />
-            <Image
-              src={`${portraitUrl}&w=320`}
-              alt="Stephen Bradshaw headshot"
-              onLoad={() => setIsLoadingImage(false)}
-            />
-          </picture>
+          {isDesktop ? (
+            /* Landscape image */
+            <>
+              <StyledBlurhash
+                hash={landscapeBlurhash}
+                height="100vh"
+                width="100%"
+                $isLoadingImage={isLoadingData || isLoadingImage}
+              />
+              <picture>
+                <source
+                  srcSet={`${landscapeUrl}&w=1920`}
+                  media="(min-width: 1600px)"
+                />
+                <source
+                  srcSet={`${landscapeUrl}&w=1600`}
+                  media="(min-width: 1366px)"
+                />
+                <source
+                  srcSet={`${landscapeUrl}&w=1366`}
+                  media="(min-width: 1024px)"
+                />
+                <source
+                  srcSet={`${landscapeUrl}&w=1024`}
+                  media="(min-width: 768px)"
+                />
+                <Image
+                  src={`${landscapeUrl}&w=800`}
+                  alt="Stephen Bradshaw headshot"
+                  onLoad={() => {
+                    console.log("loaded landscape");
+                    setIsLoadingImage(false);
+                  }}
+                />
+              </picture>
+            </>
+          ) : (
+            /* Portrait image */
+            <>
+              <StyledBlurhash
+                hash={portraitBlurhash}
+                height="100vh"
+                width="100%"
+                $isLoadingImage={isLoadingData || isLoadingImage}
+              />
+              <picture>
+                <source
+                  srcSet={`${portraitUrl}&w=768`}
+                  media="(min-width: 640px)"
+                />
+                <source
+                  srcSet={`${portraitUrl}&w=640`}
+                  media="(min-width: 320px)"
+                />
+                <Image
+                  src={`${portraitUrl}&w=320`}
+                  alt="Stephen Bradshaw headshot"
+                  onLoad={() => {
+                    console.log("loaded portrait");
+                    setIsLoadingImage(false);
+                  }}
+                />
+              </picture>
+            </>
+          )}
         </ImageOverlay>
         <TextContainer>
           <H1>Stephen Bradshaw</H1>
