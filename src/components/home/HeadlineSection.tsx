@@ -83,8 +83,8 @@ const HeadlineSection = () => {
   }
 
   const {fields} = data[0];
-  const landscapeUrl = fields.landscapeImage.fields.file.url;
-  const portraitUrl = fields.portraitImage.fields.file.url;
+  const landscapeUrl = `${fields.landscapeImage.fields.file.url}?fm=webp`;
+  const portraitUrl = `${fields.portraitImage.fields.file.url}?fm=webp`;
 
   return (
     <Section>
