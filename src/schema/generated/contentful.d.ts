@@ -47,6 +47,31 @@ export interface IAboutSection extends Entry<IAboutSectionFields> {
   };
 }
 
+export interface IHeadlineSectionFields {
+  /** Portrait Image */
+  portraitImage: Asset;
+
+  /** Landscape Image */
+  landscapeImage: Asset;
+}
+
+export interface IHeadlineSection extends Entry<IHeadlineSectionFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "headlineSection";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface IProjectFields {
   /** Title */
   title: string;
@@ -96,9 +121,13 @@ export interface IProject extends Entry<IProjectFields> {
   };
 }
 
-export type CONTENT_TYPE = "aboutPage" | "aboutSection" | "project";
+export type CONTENT_TYPE =
+  | "aboutPage"
+  | "aboutSection"
+  | "headlineSection"
+  | "project";
 
-export type IEntry = IAboutPage | IAboutSection | IProject;
+export type IEntry = IAboutPage | IAboutSection | IHeadlineSection | IProject;
 
 export type LOCALE_CODE = "de-DE" | "en-GB";
 

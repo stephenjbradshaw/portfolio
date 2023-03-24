@@ -2,8 +2,8 @@ import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import styled, {css} from "styled-components";
 import {DataContext} from "../../data/DataContext";
-import headshotLandscape from "../../images/headshotLandscape.webp";
-import headshotPortrait from "../../images/headshotPortrait.webp";
+import ErrorText from "../ErrorText";
+import Loader from "../Loader";
 
 const Section = styled.section`
   position: relative;
@@ -63,14 +63,34 @@ const TextContainer = styled.div`
 
 const HeadlineSection = () => {
   const {t} = useTranslation();
-  const {isDesktop} = useContext(DataContext);
+  const {
+    isDesktop,
+    headlineSection: {data, isLoading, isError},
+  } = useContext(DataContext);
+
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  if (isLoading) {
+    return (
+      <Section>
+        <Loader />
+      </Section>
+    );
+  }
+
+  if (isError || (!isLoading && data.length === 0)) {
+    <ErrorText>{t("GENERAL_ERROR")}</ErrorText>;
+  }
+
+  const {fields} = data[0];
+  const landscapeUrl = fields.landscapeImage.fields.file.url;
+  const portraitUrl = fields.portraitImage.fields.file.url;
 
   return (
     <Section>
       <ImageOverlay isLandscape={isDesktop} imageLoaded={imageLoaded}>
         <Image
-          src={isDesktop ? headshotLandscape : headshotPortrait}
+          src={isDesktop ? landscapeUrl : portraitUrl}
           alt="Stephen Bradshaw headshot"
           onLoad={() => setImageLoaded(true)}
         />

@@ -3,6 +3,7 @@ import {useMediaQuery} from "react-responsive";
 import {
   IAboutPageFields,
   IAboutSectionFields,
+  IHeadlineSectionFields,
   IProjectFields,
 } from "../schema/generated/contentful";
 import {breakpoints} from "../styles/themes";
@@ -27,6 +28,10 @@ const DataService = ({children}: Props) => {
     contentType: "aboutPage",
   });
 
+  const headlineSection = useGetEntries<IHeadlineSectionFields>({
+    contentType: "headlineSection",
+  });
+
   const isDesktop = useMediaQuery({
     query: `(min-width: ${breakpoints.mobile})`,
   });
@@ -37,6 +42,7 @@ const DataService = ({children}: Props) => {
         featuredProjects,
         aboutSection,
         aboutPage,
+        headlineSection,
         isDesktop,
       }}
     >
