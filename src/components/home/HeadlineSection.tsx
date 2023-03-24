@@ -35,6 +35,8 @@ const Image = styled.img`
   position: relative;
   z-index: -1;
   width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
   min-height: 100dvh;
   max-height: 100dvh;
   margin-top: -${({theme: {spacing}}) => spacing.headerHeight};
