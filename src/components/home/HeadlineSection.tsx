@@ -1,9 +1,8 @@
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import styled, {css} from "styled-components";
 import {DataContext} from "../../data/DataContext";
 import ErrorText from "../ErrorText";
-import Loader from "../Loader";
 
 const Section = styled.section`
   position: relative;
@@ -23,17 +22,15 @@ const radialGradient = css`
 
 interface ImageOverlayProps {
   isLandscape: boolean;
-  imageLoaded: boolean;
 }
 
 const ImageOverlay = styled.div<ImageOverlayProps>`
   width: 100%;
   margin-top: -${({theme: {spacing}}) => spacing.headerHeight};
   ${({isLandscape}) => (isLandscape ? radialGradient : linearGradient)}
-  opacity: ${({imageLoaded}) => (imageLoaded ? 1 : 0)}
 `;
 
-const Image = styled.img`
+const imageStyle = css`
   position: relative;
   z-index: -1;
   width: 100%;
@@ -42,6 +39,17 @@ const Image = styled.img`
   margin-top: -${({theme: {spacing}}) => spacing.headerHeight};
   object-fit: cover;
   object-position: 75% 20%;
+`;
+
+const Image = styled.img`
+  ${imageStyle}
+`;
+
+const Blurhash = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  ${imageStyle}
 `;
 
 const H1 = styled.h1`
@@ -68,55 +76,59 @@ const HeadlineSection = () => {
     headlineSection: {data, isLoading, isError},
   } = useContext(DataContext);
 
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const imageSettings = "?fm=jpg&fl=progressive&q=50";
 
-  if (isLoading) {
-    return (
-      <Section>
-        <Loader />
-      </Section>
-    );
-  }
+  const landscapeUrl = data[0]?.fields
+    ? `https:${data[0].fields.landscapeImage.fields.file.url}${imageSettings}`
+    : "";
 
-  if (isError || (!isLoading && data.length === 0)) {
-    <ErrorText>{t("GENERAL_ERROR")}</ErrorText>;
-  }
-
-  const {fields} = data[0];
-
-  const landscapeUrl = `https:${fields.landscapeImage.fields.file.url}?fm=webp&q=50`;
-  const portraitUrl = `https:${fields.portraitImage.fields.file.url}?fm=webp&q=50`;
+  const portraitUrl = data[0]?.fields
+    ? `https:${data[0].fields.portraitImage.fields.file.url}${imageSettings}`
+    : "";
 
   return (
     <Section>
-      <ImageOverlay isLandscape={isDesktop} imageLoaded={imageLoaded}>
-        <picture>
-          {/* Landscape image */}
-          <source
-            srcSet={`${landscapeUrl}&w=1920`}
-            media="(min-width: 1600px)"
-          />
-          <source
-            srcSet={`${landscapeUrl}&w=1600`}
-            media="(min-width: 1366px)"
-          />
-          <source
-            srcSet={`${landscapeUrl}&w=1366`}
-            media="(min-width: 1024px)"
-          />
-          <source
-            srcSet={`${landscapeUrl}&w=1024`}
-            media="(min-width: 768px)"
-          />
-          {/* Portrait image */}
-          <source srcSet={`${portraitUrl}&w=768`} media="(min-width: 640px)" />
-          <source srcSet={`${portraitUrl}&w=640`} media="(min-width: 320px)" />
-          <Image
-            src={`${portraitUrl}&w=320`}
-            alt="Stephen Bradshaw headshot"
-            onLoad={() => setImageLoaded(true)}
-          />
-        </picture>
+      <ImageOverlay isLandscape={isDesktop}>
+        {isLoading ? (
+          <Blurhash />
+        ) : isError ? (
+          <Blurhash>
+            <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
+          </Blurhash>
+        ) : (
+          <picture>
+            {/* Landscape image */}
+            <source
+              srcSet={`${landscapeUrl}&w=1920`}
+              media="(min-width: 1600px)"
+            />
+            <source
+              srcSet={`${landscapeUrl}&w=1600`}
+              media="(min-width: 1366px)"
+            />
+            <source
+              srcSet={`${landscapeUrl}&w=1366`}
+              media="(min-width: 1024px)"
+            />
+            <source
+              srcSet={`${landscapeUrl}&w=1024`}
+              media="(min-width: 768px)"
+            />
+            {/* Portrait image */}
+            <source
+              srcSet={`${portraitUrl}&w=768`}
+              media="(min-width: 640px)"
+            />
+            <source
+              srcSet={`${portraitUrl}&w=640`}
+              media="(min-width: 320px)"
+            />
+            <Image
+              src={`${portraitUrl}&w=320`}
+              alt="Stephen Bradshaw headshot"
+            />
+          </picture>
+        )}
       </ImageOverlay>
       <TextContainer>
         <H1>Stephen Bradshaw</H1>
