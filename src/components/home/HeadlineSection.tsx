@@ -83,17 +83,40 @@ const HeadlineSection = () => {
   }
 
   const {fields} = data[0];
-  const landscapeUrl = `${fields.landscapeImage.fields.file.url}?fm=webp`;
-  const portraitUrl = `${fields.portraitImage.fields.file.url}?fm=webp`;
+
+  const landscapeUrl = `https:${fields.landscapeImage.fields.file.url}?fm=webp&q=50`;
+  const portraitUrl = `https:${fields.portraitImage.fields.file.url}?fm=webp&q=50`;
 
   return (
     <Section>
       <ImageOverlay isLandscape={isDesktop} imageLoaded={imageLoaded}>
-        <Image
-          src={isDesktop ? landscapeUrl : portraitUrl}
-          alt="Stephen Bradshaw headshot"
-          onLoad={() => setImageLoaded(true)}
-        />
+        <picture>
+          {/* Landscape image */}
+          <source
+            srcSet={`${landscapeUrl}&w=1920`}
+            media="(min-width: 1600px)"
+          />
+          <source
+            srcSet={`${landscapeUrl}&w=1600`}
+            media="(min-width: 1366px)"
+          />
+          <source
+            srcSet={`${landscapeUrl}&w=1366`}
+            media="(min-width: 1024px)"
+          />
+          <source
+            srcSet={`${landscapeUrl}&w=1024`}
+            media="(min-width: 768px)"
+          />
+          {/* Portrait image */}
+          <source srcSet={`${portraitUrl}&w=768`} media="(min-width: 640px)" />
+          <source srcSet={`${portraitUrl}&w=640`} media="(min-width: 320px)" />
+          <Image
+            src={`${portraitUrl}&w=320`}
+            alt="Stephen Bradshaw headshot"
+            onLoad={() => setImageLoaded(true)}
+          />
+        </picture>
       </ImageOverlay>
       <TextContainer>
         <H1>Stephen Bradshaw</H1>
