@@ -49,7 +49,10 @@ interface StyledBlurhashProps {
 const StyledBlurhash = styled(Blurhash)<StyledBlurhashProps>`
   position: absolute !important;
   opacity: ${({$isLoadingImage}) => ($isLoadingImage ? 1 : 0)};
-  transition: opacity 0.5s ease-in-out;
+
+  &.animate {
+    transition: opacity 0.5s ease-in-out;
+  }
 `;
 
 const H1 = styled.h1`
@@ -111,6 +114,7 @@ const HeadlineSection = () => {
                 height="100vh"
                 width="100%"
                 $isLoadingImage={isLoadingData || isLoadingImage}
+                className={isLoadingImage || isLoadingData ? "" : "animate"}
               />
               <picture>
                 <source
@@ -147,6 +151,7 @@ const HeadlineSection = () => {
                 height="100vh"
                 width="100%"
                 $isLoadingImage={isLoadingData || isLoadingImage}
+                className={isLoadingImage || isLoadingData ? "" : "animate"}
               />
               <picture>
                 <source
