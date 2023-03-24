@@ -35,8 +35,8 @@ const Image = styled.img`
   position: relative;
   z-index: -1;
   width: 100%;
-  min-height: 100vh;
-  max-height: 100vh;
+  min-height: 100dvh;
+  max-height: 100dvh;
   margin-top: -${({theme: {spacing}}) => spacing.headerHeight};
   object-fit: cover;
   object-position: 75% 20%;
@@ -111,7 +111,7 @@ const HeadlineSection = () => {
             <>
               <StyledBlurhash
                 hash={landscapeBlurhash}
-                height="100vh"
+                height="100dvh"
                 width="100%"
                 $isLoadingImage={isLoadingData || isLoadingImage}
                 className={isLoadingImage || isLoadingData ? "" : "animate"}
@@ -148,7 +148,7 @@ const HeadlineSection = () => {
             <>
               <StyledBlurhash
                 hash={portraitBlurhash}
-                height="100vh"
+                height="100dvh"
                 width="100%"
                 $isLoadingImage={isLoadingData || isLoadingImage}
                 className={isLoadingImage || isLoadingData ? "" : "animate"}
