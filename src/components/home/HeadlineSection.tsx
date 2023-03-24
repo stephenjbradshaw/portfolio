@@ -1,8 +1,9 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import styled, {css} from "styled-components";
 import {DataContext} from "../../data/DataContext";
 import ErrorText from "../ErrorText";
+import {Blurhash} from "react-blurhash";
 
 const Section = styled.section`
   position: relative;
@@ -30,7 +31,7 @@ const ImageOverlay = styled.div<ImageOverlayProps>`
   ${({isLandscape}) => (isLandscape ? radialGradient : linearGradient)}
 `;
 
-const imageStyle = css`
+const Image = styled.img`
   position: relative;
   z-index: -1;
   width: 100%;
@@ -41,15 +42,14 @@ const imageStyle = css`
   object-position: 75% 20%;
 `;
 
-const Image = styled.img`
-  ${imageStyle}
-`;
+interface StyledBlurhashProps {
+  $isLoadingImage?: boolean;
+}
 
-const Blurhash = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  ${imageStyle}
+const StyledBlurhash = styled(Blurhash)<StyledBlurhashProps>`
+  position: absolute !important;
+  opacity: ${({$isLoadingImage}) => ($isLoadingImage ? 1 : 0)};
+  transition: opacity 0.5s ease-in-out;
 `;
 
 const H1 = styled.h1`
@@ -69,14 +69,20 @@ const TextContainer = styled.div`
   color: ${({theme: {colors}}) => colors.lightText};
 `;
 
+const StyledErrorText = styled(ErrorText)`
+  margin: 4rem 0 0 0;
+`;
+
 const HeadlineSection = () => {
   const {t} = useTranslation();
   const {
     isDesktop,
-    headlineSection: {data, isLoading, isError},
+    headlineSection: {data, isLoading: isLoadingData, isError},
   } = useContext(DataContext);
 
-  const imageSettings = "?fm=jpg&fl=progressive&q=50";
+  const [isLoadingImage, setIsLoadingImage] = useState(true);
+
+  const imageSettings = "?fm=webp&q=50";
 
   const landscapeUrl = data[0]?.fields
     ? `https:${data[0].fields.landscapeImage.fields.file.url}${imageSettings}`
@@ -86,16 +92,20 @@ const HeadlineSection = () => {
     ? `https:${data[0].fields.portraitImage.fields.file.url}${imageSettings}`
     : "";
 
+  const landscapeBlurhash = "M6H24X00#N1Br.{@5vJX}*I^E3RjR.n#s:";
+  const portraitBlurhash = "LAE{8cIX0eRj04xs$Mod-xk9}[R.";
+
   return (
-    <Section>
-      <ImageOverlay isLandscape={isDesktop}>
-        {isLoading ? (
-          <Blurhash />
-        ) : isError ? (
-          <Blurhash>
-            <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
-          </Blurhash>
-        ) : (
+    <>
+      <Section>
+        {/* {TODO Match breakpoints} */}
+        <ImageOverlay isLandscape={isDesktop}>
+          <StyledBlurhash
+            hash={isDesktop ? landscapeBlurhash : portraitBlurhash}
+            height="100vh"
+            width="100%"
+            $isLoadingImage={isLoadingData || isLoadingImage}
+          />
           <picture>
             {/* Landscape image */}
             <source
@@ -126,15 +136,17 @@ const HeadlineSection = () => {
             <Image
               src={`${portraitUrl}&w=320`}
               alt="Stephen Bradshaw headshot"
+              onLoad={() => setIsLoadingImage(false)}
             />
           </picture>
-        )}
-      </ImageOverlay>
-      <TextContainer>
-        <H1>Stephen Bradshaw</H1>
-        <Headline>{t("HEADLINE")}</Headline>
-      </TextContainer>
-    </Section>
+        </ImageOverlay>
+        <TextContainer>
+          <H1>Stephen Bradshaw</H1>
+          <Headline>{t("HEADLINE")}</Headline>
+        </TextContainer>
+      </Section>
+      {isError ? <StyledErrorText>{t("GENERAL_ERROR")}</StyledErrorText> : null}
+    </>
   );
 };
 
