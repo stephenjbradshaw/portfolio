@@ -138,10 +138,7 @@ const HeadlineSection = () => {
                 <Image
                   src={`${landscapeUrl}&w=800`}
                   alt="Stephen Bradshaw headshot"
-                  onLoad={() => {
-                    console.log("loaded landscape");
-                    setIsLoadingImage(false);
-                  }}
+                  onLoad={() => setIsLoadingImage(false)}
                 />
               </picture>
             </>
@@ -167,10 +164,7 @@ const HeadlineSection = () => {
                 <Image
                   src={`${portraitUrl}&w=320`}
                   alt="Stephen Bradshaw headshot"
-                  onLoad={() => {
-                    console.log("loaded portrait");
-                    setIsLoadingImage(false);
-                  }}
+                  onLoad={() => setIsLoadingImage(false)}
                 />
               </picture>
             </>
