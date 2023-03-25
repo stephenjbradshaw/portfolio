@@ -34,8 +34,9 @@ const TitleImage = styled.img<TitleImageProps>`
 const StyledIframe = styled.iframe`
   border: none;
   width: 100%;
-  height: 660px;
+  height: 700px;
   margin: 2rem 0;
+  overflow: hidden;
 `;
 
 const renderOptions = {
@@ -111,6 +112,7 @@ const ProjectDetail = () => {
                 src={iFrameData.src}
                 height={iFrameData.height}
                 width={iFrameData.width}
+                scrolling="no"
               />
             ) : (
               <TitleImage {...imageProps} />
