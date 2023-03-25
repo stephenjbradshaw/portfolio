@@ -31,6 +31,13 @@ const TitleImage = styled.img<TitleImageProps>`
   object-position: ${({objectPosition}) => objectPosition};
 `;
 
+const StyledIframe = styled.iframe`
+  border: none;
+  width: 100%;
+  height: 660px;
+  margin: 2rem 0;
+`;
+
 const renderOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node: Node) => {
@@ -81,6 +88,13 @@ const ProjectDetail = () => {
         objectPosition: fields.cardImageObjectPosition,
       };
 
+  const iFrameData = {
+    title: "Bouncing DVD Logo Simulator",
+    src: "https://www.dvdlogosimulator.com?iframe=true",
+    height: "300px",
+    width: "100%",
+  };
+
   return (
     <>
       <Article>
@@ -91,7 +105,17 @@ const ProjectDetail = () => {
         ) : (
           <>
             <h2>{fields.title}</h2>
-            <TitleImage {...imageProps} />
+            {fields.slug === "dvd-logo-simulator" ? (
+              <StyledIframe
+                title={iFrameData.title}
+                src={iFrameData.src}
+                height={iFrameData.height}
+                width={iFrameData.width}
+              />
+            ) : (
+              <TitleImage {...imageProps} />
+            )}
+
             {documentToReactComponents(fields.body, renderOptions)}
           </>
         )}
