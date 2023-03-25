@@ -34,7 +34,7 @@ const TitleImage = styled.img<TitleImageProps>`
 const StyledIframe = styled.iframe`
   border: none;
   width: 100%;
-  height: 700px;
+  height: 760px;
   margin: 2rem 0;
   overflow: hidden;
 `;
@@ -92,8 +92,6 @@ const ProjectDetail = () => {
   const iFrameData = {
     title: "Bouncing DVD Logo Simulator",
     src: "https://www.dvdlogosimulator.com?iframe=true",
-    height: "300px",
-    width: "100%",
   };
 
   return (
@@ -110,8 +108,6 @@ const ProjectDetail = () => {
               <StyledIframe
                 title={iFrameData.title}
                 src={iFrameData.src}
-                height={iFrameData.height}
-                width={iFrameData.width}
                 scrolling="no"
               />
             ) : (
