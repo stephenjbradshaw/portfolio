@@ -1,4 +1,4 @@
-import {Outlet} from "react-router-dom";
+import {Outlet, ScrollRestoration} from "react-router-dom";
 import styled, {ThemeProvider} from "styled-components";
 import DataService from "../data/DataService";
 import Footer from "../components/headerFooter/Footer";
@@ -20,6 +20,7 @@ const Layout = () => {
   return (
     <ThemeProvider theme={light}>
       <GlobalStyle />
+      <ScrollRestoration />
       <DataService>
         <Container>
           <Header />
