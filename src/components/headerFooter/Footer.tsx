@@ -14,18 +14,17 @@ const FooterElement = styled.footer`
 const Name = styled.p`
   font-size: 2rem;
   font-weight: bold;
+  margin: 0;
 `;
 
 const Footer = () => {
   return (
-    <>
-      <FooterElement>
-        <Name>Stephen Bradshaw</Name>
-        <Nav isFooter />
-        <LangSelect fontSize="1.6rem" />
-        <SocialLinks fontSize="2rem" />
-      </FooterElement>
-    </>
+    <FooterElement>
+      <Name>Stephen Bradshaw</Name>
+      <Nav isFooter />
+      <LangSelect fontSize="1.6rem" />
+      <SocialLinks fontSize="2rem" />
+    </FooterElement>
   );
 };
 

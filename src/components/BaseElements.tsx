@@ -24,3 +24,21 @@ export const BaseLink = styled(Link)`
     color: inherit;
   }
 `;
+
+export const BaseArticle = styled.article`
+  padding: 0 ${({theme: {spacing}}) => spacing.sideMargin};
+  margin: auto;
+  height: 100%;
+  max-width: 99rem;
+
+  ul {
+    list-style-type: disc;
+    padding-left: 1rem;
+    p {
+      margin: 0.3rem;
+    }
+    li {
+      padding-left: 0.5rem;
+    }
+  }
+`;

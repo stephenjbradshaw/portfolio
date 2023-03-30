@@ -100,7 +100,7 @@ const typography = css`
   }
 
   h3 {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
   }
 
   p {

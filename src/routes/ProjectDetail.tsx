@@ -1,18 +1,15 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { useContext } from "react";
-import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
+import {useContext} from "react";
+import {useTranslation} from "react-i18next";
+import {useParams} from "react-router-dom";
 import styled from "styled-components";
+import {BaseArticle} from "../components/BaseElements";
 import ErrorText from "../components/ErrorText";
 import Loader from "../components/Loader";
-import { DataContext } from "../data/DataContext";
-import { renderOptions } from "../utils/contentful";
+import {DataContext} from "../data/DataContext";
+import {renderOptions} from "../utils/contentful";
 
-const Article = styled.article`
-  padding: 0 ${({theme: {spacing}}) => spacing.sideMargin} 4rem;
-  margin: auto;
-  height: 100%;
-  max-width: 99rem;
+const Article = styled(BaseArticle)`
   h2 {
     margin: 0;
   }
@@ -82,28 +79,26 @@ const ProjectDetail = () => {
   };
 
   return (
-    <>
-      <Article>
-        {isError ? (
-          <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
-        ) : (
-          <>
-            <h2>{fields.title}</h2>
-            {fields.slug === "dvd-logo-simulator" ? (
-              <StyledIframe
-                title={iFrameData.title}
-                src={iFrameData.src}
-                scrolling="no"
-              />
-            ) : (
-              <TitleImage {...imageProps} />
-            )}
+    <Article>
+      {isError ? (
+        <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
+      ) : (
+        <>
+          <h2>{fields.title}</h2>
+          {fields.slug === "dvd-logo-simulator" ? (
+            <StyledIframe
+              title={iFrameData.title}
+              src={iFrameData.src}
+              scrolling="no"
+            />
+          ) : (
+            <TitleImage {...imageProps} />
+          )}
 
-            {documentToReactComponents(fields.body, renderOptions)}
-          </>
-        )}
-      </Article>
-    </>
+          {documentToReactComponents(fields.body, renderOptions)}
+        </>
+      )}
+    </Article>
   );
 };
 
