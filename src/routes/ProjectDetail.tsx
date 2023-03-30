@@ -1,12 +1,12 @@
-import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
-import {BLOCKS, Node} from "@contentful/rich-text-types";
-import {useContext} from "react";
-import {useTranslation} from "react-i18next";
-import {useParams} from "react-router-dom";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ErrorText from "../components/ErrorText";
 import Loader from "../components/Loader";
-import {DataContext} from "../data/DataContext";
+import { DataContext } from "../data/DataContext";
+import { renderOptions } from "../utils/contentful";
 
 const Article = styled.article`
   padding: 0 ${({theme: {spacing}}) => spacing.sideMargin} 4rem;
@@ -38,24 +38,6 @@ const StyledIframe = styled.iframe`
   margin: 2rem 0;
   overflow: hidden;
 `;
-
-const renderOptions = {
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node: Node) => {
-      const {
-        data: {
-          target: {fields},
-        },
-      } = node;
-      return (
-        <img
-          alt={fields.title}
-          src={`${fields.file.url}?fm=webp&w=300&h=300`}
-        />
-      );
-    },
-  },
-};
 
 const ProjectDetail = () => {
   const {t} = useTranslation();

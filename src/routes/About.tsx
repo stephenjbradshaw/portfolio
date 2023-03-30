@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ErrorText from "../components/ErrorText";
 import Loader from "../components/Loader";
 import {DataContext} from "../data/DataContext";
+import {renderOptions} from "../utils/contentful";
 
 const Section = styled.section`
   padding: 0 ${({theme: {spacing}}) => spacing.sideMargin} 4rem;
@@ -32,7 +33,7 @@ const About = () => {
       ) : (
         <>
           <h2>{t("ABOUT_ME")}</h2>
-          {documentToReactComponents(data[0].fields.body)}
+          {documentToReactComponents(data[0].fields.body, renderOptions)}
         </>
       )}
     </Section>

@@ -2,6 +2,7 @@ import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import {Entry} from "contentful";
 import styled from "styled-components";
 import {IProjectFields} from "../../schema/generated/contentful";
+import {renderOptions} from "../../utils/contentful";
 import {BaseLink} from "../BaseElements";
 
 interface CardImageProps {
@@ -32,7 +33,7 @@ const ProjectCard = ({entry}: Props) => {
         />
         <h3>{fields.title}</h3>
       </BaseLink>
-      {documentToReactComponents(fields.previewText)}
+      {documentToReactComponents(fields.previewText, renderOptions)}
     </li>
   );
 };

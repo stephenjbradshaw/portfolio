@@ -3,6 +3,7 @@ import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import styled from "styled-components";
 import {DataContext} from "../../data/DataContext";
+import {renderOptions} from "../../utils/contentful";
 import {ActionButtonLink} from "../Buttons";
 import ErrorText from "../ErrorText";
 import Loader from "../Loader";
@@ -43,7 +44,7 @@ const AboutSection = () => {
           <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
         ) : (
           <div className="main-content">
-            {documentToReactComponents(fields.body)}
+            {documentToReactComponents(fields.body, renderOptions)}
           </div>
         )}
         <ActionButtonLink to="about">{t("MORE_ABOUT_ME")}</ActionButtonLink>
