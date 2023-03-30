@@ -23,23 +23,19 @@ const About = () => {
     aboutPage: {data, isError, isLoading},
   } = useContext(DataContext);
 
-  const {fields} = data[0];
-
   return (
-    <>
-      <Section>
-        {isLoading ? (
-          <Loader />
-        ) : isError ? (
-          <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
-        ) : (
-          <>
-            <h2>{t("ABOUT_ME")}</h2>
-            {documentToReactComponents(fields.body)}
-          </>
-        )}
-      </Section>
-    </>
+    <Section>
+      {isLoading ? (
+        <Loader />
+      ) : isError ? (
+        <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
+      ) : (
+        <>
+          <h2>{t("ABOUT_ME")}</h2>
+          {documentToReactComponents(data[0].fields.body)}
+        </>
+      )}
+    </Section>
   );
 };
 
