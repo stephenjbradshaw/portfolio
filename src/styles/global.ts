@@ -105,6 +105,7 @@ const typography = css`
 
   p {
     font-size: 1.6rem;
+    margin-bottom: 1.6rem;
   }
 
   code {
