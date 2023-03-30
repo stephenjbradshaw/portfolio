@@ -20,4 +20,7 @@ export const BaseButton = styled.button`
 export const BaseLink = styled(Link)`
   color: inherit;
   text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
 `;
