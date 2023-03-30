@@ -3,6 +3,7 @@ import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import styled from "styled-components";
 import {DataContext} from "../../data/DataContext";
+import {ActionButtonLink} from "../Buttons";
 import ErrorText from "../ErrorText";
 import Loader from "../Loader";
 
@@ -17,6 +18,10 @@ const Section = styled.section`
 const InnerContainer = styled.div`
   max-width: 100rem;
   margin: auto;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const AboutSection = () => {
@@ -37,8 +42,11 @@ const AboutSection = () => {
         ) : isError ? (
           <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
         ) : (
-          documentToReactComponents(fields.body)
+          <div className="main-content">
+            {documentToReactComponents(fields.body)}
+          </div>
         )}
+        <ActionButtonLink to="about">{t("MORE_ABOUT_ME")}</ActionButtonLink>
       </InnerContainer>
     </Section>
   );
