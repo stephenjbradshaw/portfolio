@@ -69,7 +69,12 @@ const ProjectDetail = () => {
     (featuredProject) => featuredProject.fields.slug === slug
   );
 
-  if (isLoading) return <Loader />;
+  if (isLoading)
+    return (
+      <Article>
+        <Loader />
+      </Article>
+    );
 
   if (!project) {
     throw new Error("NOT_FOUND");
@@ -97,9 +102,7 @@ const ProjectDetail = () => {
   return (
     <>
       <Article>
-        {isLoading ? (
-          <Loader />
-        ) : isError ? (
+        {isError ? (
           <ErrorText>{t("GENERAL_ERROR")}</ErrorText>
         ) : (
           <>
