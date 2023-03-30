@@ -113,9 +113,7 @@ const typography = css`
   }
 
   a {
-    :visited {
-      color: inherit;
-    }
+    color: inherit;
   }
 
   hr {
