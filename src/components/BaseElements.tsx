@@ -35,7 +35,7 @@ export const BaseArticle = styled.article`
     list-style-type: disc;
     padding-left: 1rem;
     p {
-      margin: 0.3rem;
+      margin-bottom: 0.4rem;
     }
     li {
       padding-left: 0.5rem;
