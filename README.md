@@ -4,6 +4,12 @@
 
 Personal portfolio site.
 
+Features:
+
+- Contentful CMS integration
+- Localization (EN / DE)
+- Theming support
+- SVG animations
+- CI/CD with Netlify
+
 Stack: React, TypeScript, Contentful, Styled Components
-
-
