@@ -2,7 +2,7 @@ import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import {Entry} from "contentful";
 import styled from "styled-components";
 import {IProjectFields} from "../../schema/generated/contentful";
-import {renderOptions} from "../../utils/contentful";
+import {renderOptions} from "../../utils/richTextOptions";
 import {BaseLink} from "../BaseElements";
 
 interface CardImageProps {

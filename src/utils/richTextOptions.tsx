@@ -1,20 +1,7 @@
 import {BLOCKS, INLINES, Node} from "@contentful/rich-text-types";
-import {createClient} from "contentful";
 import {Link} from "react-router-dom";
-
-declare global {
-  namespace NodeJS {
-    interface ProcessEnv {
-      REACT_APP_CONTENTFUL_SPACE_ID: string;
-      REACT_APP_CONTENTFUL_ACCESS_TOKEN: string;
-    }
-  }
-}
-
-export const contentfulClient = createClient({
-  accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
-  space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
-});
+import SyntaxHighlighter from "react-syntax-highlighter";
+import {atomOneDark} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 // Specify what components to render when rendering rich text
 export const renderOptions = {
@@ -39,6 +26,25 @@ export const renderOptions = {
         content: [{value}],
       } = inline;
       return <Link to={uri}>{value}</Link>;
+    },
+    [INLINES.EMBEDDED_ENTRY]: (node: Node) => {
+      const {
+        data: {
+          target: {fields},
+        },
+      } = node;
+      if (fields?.codeBlock) {
+        console.log(fields.language);
+        return (
+          <SyntaxHighlighter
+            language={fields.language}
+            style={atomOneDark}
+            customStyle={{padding: "2rem", borderRadius: "7px"}}
+          >
+            {fields.codeBlock}
+          </SyntaxHighlighter>
+        );
+      } else return null;
     },
   },
 };

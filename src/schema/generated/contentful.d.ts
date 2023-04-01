@@ -47,6 +47,31 @@ export interface IAboutSection extends Entry<IAboutSectionFields> {
   };
 }
 
+export interface ICodeBlockFields {
+  /** title */
+  title: string;
+
+  /** codeBlock */
+  codeBlock: string;
+}
+
+export interface ICodeBlock extends Entry<ICodeBlockFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "codeBlock";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface IHeadlineSectionFields {
   /** Portrait Image */
   portraitImage: Asset;
@@ -124,10 +149,16 @@ export interface IProject extends Entry<IProjectFields> {
 export type CONTENT_TYPE =
   | "aboutPage"
   | "aboutSection"
+  | "codeBlock"
   | "headlineSection"
   | "project";
 
-export type IEntry = IAboutPage | IAboutSection | IHeadlineSection | IProject;
+export type IEntry =
+  | IAboutPage
+  | IAboutSection
+  | ICodeBlock
+  | IHeadlineSection
+  | IProject;
 
 export type LOCALE_CODE = "de-DE" | "en-GB";
 

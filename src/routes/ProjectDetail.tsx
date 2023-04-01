@@ -7,7 +7,7 @@ import {BaseArticle} from "../components/BaseElements";
 import ErrorText from "../components/ErrorText";
 import Loader from "../components/Loader";
 import {DataContext} from "../data/DataContext";
-import {renderOptions} from "../utils/contentful";
+import {renderOptions} from "../utils/richTextOptions";
 
 const Article = styled(BaseArticle)`
   h2 {

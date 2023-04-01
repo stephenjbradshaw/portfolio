@@ -3,7 +3,7 @@ import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import styled from "styled-components";
 import {DataContext} from "../../data/DataContext";
-import {renderOptions} from "../../utils/contentful";
+import {renderOptions} from "../../utils/richTextOptions";
 import {ActionButtonLink} from "../Buttons";
 import ErrorText from "../ErrorText";
 import Loader from "../Loader";

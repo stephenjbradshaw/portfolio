@@ -111,6 +111,7 @@ const typography = css`
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
+    font-size: 1.6rem;
   }
 
   a {
@@ -120,6 +121,7 @@ const typography = css`
   hr {
     border: 0;
     border-bottom: 1px solid grey;
+    margin: 4rem 0;
   }
 `;
 
