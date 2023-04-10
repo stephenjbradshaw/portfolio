@@ -34,7 +34,6 @@ export const renderOptions = {
         },
       } = node;
       if (fields?.codeBlock) {
-        console.log(fields.language);
         return (
           <SyntaxHighlighter
             language={fields.language}
